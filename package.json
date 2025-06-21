@@ -1,0 +1,17 @@
+{
+    "name": "online-cinema",
+    "private": true,
+    "scripts": {
+        "dev:web": "cd web && npm install && npm run dev",
+        "dev:api": "cd api && npm install && npm run dev",
+        "dev": "npm-run-all --parallel dev:web dev:api",
+        "start:web": "cd web && npm run start",
+        "start:api": "cd api && npm run start",
+        "format:web": "cd web && npm run format",
+        "format:api": "cd api && npm run format",
+        "format": "npm-run-all --parallel format:web format:api"
+    },
+    "devDependencies": {
+        "npm-run-all": "^4.1.5"
+    }
+}
