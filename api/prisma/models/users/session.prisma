@@ -1,9 +1,9 @@
 model Session {
   id        String   @id @default(uuid())
-  userId    String   @map("user_id")
-  user      User     @relation(fields: [userId], references: [id])
   token     String   @unique
-  expiresAt DateTime @map("expires_at")
+  sid       String
+  sess      Json
+  expire    DateTime @map("expire")
   ipAddress String?  @map("ip_address")
   userAgent String?  @map("user_agent")
   createdAt DateTime @default(now()) @map("created_at")
