@@ -9,7 +9,7 @@
         "build": "nest build",
         "format": "prettier . --write",
         "start": "nest start",
-        "dev": "nest start --watch",
+        "dev": "npx kill-port 4000 && nest start --watch",
         "start:debug": "nest start --debug --watch",
         "start:prod": "node dist/main",
         "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",

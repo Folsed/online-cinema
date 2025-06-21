@@ -1,33 +1,36 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
-import * as bcrypt from 'bcrypt';
-import { AuthDto } from './dtos/auth.dto';
-import { PrismaService } from '../prisma/prisma.service';
+import { Injectable } from '@nestjs/common';
+import { RegisterDto } from './dtos/register.dto';
+import auth from '../../config/auth';
+import { LoginDto } from './dtos/login.dto';
+import { Request } from 'express';
+import { fromNodeHeaders } from 'better-auth/node';
 
 @Injectable()
 export class AuthService {
-    constructor(private readonly prismaService: PrismaService) {}
+    constructor() {}
 
-    async register(dto: AuthDto) {
-        const { email, password } = dto;
-
-        const hashPassword = await bcrypt.hash(password, 10);
-
-        return this.prismaService.user.create({
-            data: {
-                email: email,
-                password: hashPassword,
+    async register(dto: RegisterDto) {
+        return await auth.api.signUpEmail({
+            body: {
+                name: dto.username,
+                email: dto.email,
+                password: dto.password,
+                acceptTerms: dto.acceptTerms,
             },
         });
     }
 
-    async validateUser(dto: AuthDto): Promise<Omit<AuthDto, 'password'>> {
-        const user = await this.prismaService.user.findUnique({ where: { email: dto.email } });
-        if (!user) throw new UnauthorizedException('Incorrect email or password');
-
-        const isMatch = await bcrypt.compare(dto.password, user.password);
-        if (!isMatch) throw new UnauthorizedException('Incorrect email or password');
-
-        const { password, ...result } = user;
-        return result;
+    async login(dto: LoginDto, req: Request) {
+        return await auth.api.signInEmail({
+            body: {
+                email: dto.email,
+                password: dto.password,
+            },
+            headers: fromNodeHeaders(req.headers),
+        });
     }
+
+    // async logout() {
+    //     return await auth.api.signOut();
+    // }
 }

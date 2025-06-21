@@ -19,6 +19,7 @@ const auth = betterAuth({
     user: {
         modelName: 'users',
         fields: {
+            name: 'username',
             emailVerified: 'email_verified',
             createdAt: 'created_at',
             updatedAt: 'updated_at',
