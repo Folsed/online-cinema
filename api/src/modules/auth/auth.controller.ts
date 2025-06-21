@@ -73,6 +73,7 @@ export class AuthController {
     @UseGuards(AuthenticatedGuard)
     @Get('me')
     me(@Req() req: Request) {
+        console.log(req.session);
         return req.user;
     }
 }

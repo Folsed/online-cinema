@@ -5,9 +5,7 @@ import { Prisma } from '@prisma/client';
 import { ConfigService } from '@nestjs/config';
 import { parseMaxAgeToMsUtil } from '../utils/parseMaxAgeToMs.util';
 
-interface ISessionData {
-    cookie: Record<string, any>;
-
+interface PrismaSessionData {
     [key: string]: any;
 }
 
@@ -25,41 +23,38 @@ export class PrismaSessionStore extends Store implements OnModuleInit {
 
     async onModuleInit() {}
 
-    async get(sid: string, callback: (error: any, session?: SessionData | null) => void) {
-        try {
-            const rec = await this.prismaService.session.findUnique({ where: { sid } });
-            if (!rec || rec.expiresAt < new Date()) {
-                return callback(null, null);
-            }
-            const sessionData = rec.sess as unknown as SessionData;
-            return callback(null, sessionData);
-        } catch (error) {
-            return callback(error);
-        }
+    get(sid: string, callback: (err: any, session?: SessionData | null) => void): void {
+        this.prismaService.session
+            .findUnique({ where: { sid } })
+            .then((rec) => {
+                if (!rec || rec.expiresAt < new Date()) {
+                    return callback(null, null);
+                }
+                const sessionData = rec.sess as unknown as SessionData;
+                callback(null, sessionData);
+            })
+            .catch((err) => callback(err));
     }
 
-    async set(sid: string, session: SessionData, callback?: (err?: any) => void) {
+    set(sid: string, session: SessionData, callback?: (err?: any) => void): void {
         const expiresAt = new Date(Date.now() + this.ttl);
-        try {
-            const jsonData = session as unknown as Prisma.InputJsonValue;
-
-            await this.prismaService.session.upsert({
+        const jsonData = session as unknown as Prisma.InputJsonValue;
+        this.prismaService.session
+            .upsert({
                 where: { sid },
                 create: { sid, sess: jsonData, expiresAt },
                 update: { sess: jsonData, expiresAt },
-            });
-            callback && callback();
-        } catch (err) {
-            callback && callback(err);
-        }
+            })
+            .then(() => callback && callback())
+            .catch((err) => callback && callback(err));
     }
 
-    async destroy(sid: string, callback?: (err?: any) => void) {
-        try {
-            await this.prismaService.session.delete({ where: { sid } });
-            callback && callback();
-        } catch (err) {
-            callback && callback(err);
-        }
+    destroy(sid: string, callback?: (err?: any) => void): void {
+        if (callback) callback();
+        this.prismaService.session.delete({ where: { sid } }).catch((err: any) => {
+            if (err.code !== 'P2025') {
+                console.error('Failed to delete session from DB:', err);
+            }
+        });
     }
 }
