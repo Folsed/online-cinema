@@ -1,12 +1,12 @@
-import { Injectable, Res } from '@nestjs/common';
+import { BadRequestException, Injectable, Res } from '@nestjs/common';
 import { RegisterDto } from './dtos/register.dto';
 import auth from '../../config/auth';
 import { LoginDto } from './dtos/login.dto';
 import { Request, Response } from 'express';
-import { fromNodeHeaders } from 'better-auth/node';
 import { forwardCookies, pickAuthHeaders } from '../../common/utils/http.util';
 import { plainToInstance } from 'class-transformer';
 import { UserResponseDto } from './dtos/user-response.dto';
+import { ConfirmResetDto, RequestResetDto } from './dtos/password-reset.dto';
 
 @Injectable()
 export class AuthService {
@@ -51,5 +51,37 @@ export class AuthService {
         return plainToInstance(UserResponseDto, data, {
             excludeExtraneousValues: true,
         });
+    }
+
+    async passwordResetRequest(dto: RequestResetDto, res: Response) {
+        try {
+            await auth.api.requestPasswordReset({
+                body: {
+                    email: dto.email,
+                    redirectTo: process.env.FRONTEND_URL + '/reset-password',
+                },
+            });
+            res.status(200).json({ message: 'If the email exists, a reset link was sent.' });
+        } catch (error) {
+            res.status(400).json({ error: 'Something went wrong.' });
+        }
+    }
+
+    async passwordResetConfirm(dto: ConfirmResetDto, res: Response, req: Request) {
+        const betterReset = await auth.api.resetPassword({
+            body: {
+                token: dto.token,
+                newPassword: dto.newPassword,
+            },
+            asResponse: true,
+            returnHeaders: true,
+        });
+
+        forwardCookies(betterReset, res);
+
+        if (!betterReset.ok) {
+            throw new BadRequestException((await betterReset.json()).error?.message);
+        }
+        res.status(betterReset.status).json(await betterReset.json());
     }
 }
