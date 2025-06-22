@@ -2,12 +2,12 @@
 import React, { useState } from 'react'
 import FormInput from '@/app/(authLayout)/components/FormInput'
 import { Button } from '@/components/shadcn/button'
-import { EAuthFormType, ILoginPayload, IRegisterPayload, TAuthFormType } from '@/types/auth.types'
+import { EAuthFormType, ILoginPayload, IRegisterPayload } from '@/types/auth.types'
 import TermsCheckbox from '@/app/(authLayout)/components/TermsCheckbox'
 import Link from 'next/link'
 import { Separator } from '@/components/shadcn/separator'
 
-const AuthForm = ({ type }: { type: TAuthFormType }) => {
+const AuthForm = ({ type }: { type: EAuthFormType }) => {
     const FORM_TITLE: string = type.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase())
     const [payload, setPayload] = useState<IRegisterPayload | ILoginPayload>({
         username: '',
@@ -33,7 +33,7 @@ const AuthForm = ({ type }: { type: TAuthFormType }) => {
                                         label='Username'
                                         type='text'
                                         required
-                                        // value={authPayload.email}
+                                        value={payload.username}
                                         // onChange={e =>
                                         //     setAuthPayload(prev => ({
                                         //         ...prev,
@@ -77,7 +77,7 @@ const AuthForm = ({ type }: { type: TAuthFormType }) => {
                                     {/*{type === 'register' ? 'Sign up' : 'Log in'}*/}
                                     Log In
                                 </Button>
-                                <div className='text-primary flex h-6 items-center justify-center gap-4 font-semibold uppercase'>
+                                <div className='text-primary flex h-6 items-center justify-center gap-4 font-semibold uppercase max-sm:text-xs'>
                                     {type === EAuthFormType.Login ? (
                                         <Link
                                             href='/reset-password/request'
