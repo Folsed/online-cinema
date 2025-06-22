@@ -1,11 +1,11 @@
-import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dtos/register.dto';
 import { LoginDto } from './dtos/login.dto';
 import auth from '../../config/auth';
-import { fromNodeHeaders } from 'better-auth/node';
 import { Request, Response } from 'express';
-import { forwardCookies, pickAuthHeaders } from '../../common/utils/http.util';
+import { pickAuthHeaders } from '../../common/utils/http.util';
+import { AuthenticatedGuard } from '../../common/guards/authenticated.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -13,41 +13,27 @@ export class AuthController {
 
     @Post('register')
     async register(@Body() dto: RegisterDto, @Res({ passthrough: true }) res: Response) {
-        const r = await auth.api.signUpEmail({
-            body: {
-                name: dto.username,
-                email: dto.email,
-                password: dto.password,
-                acceptTerms: dto.acceptTerms,
-            },
-            asResponse: true,
-        });
-
-        forwardCookies(r, res);
-        res.status(r.status).json(await r.json());
+        return this.authService.register(dto, res);
     }
 
     @Post('login')
     async login(@Body() dto: LoginDto, @Res({ passthrough: true }) res: Response) {
-        const r = await auth.api.signInEmail({
-            body: { email: dto.email, password: dto.password },
-            asResponse: true,
-        });
-        forwardCookies(r, res);
-        res.status(r.status).json(await r.json());
+        return this.authService.login(dto, res);
     }
 
     @Post('logout')
     async logout(@Req() req: Request, @Res({ passthrough: true }) res: Response) {
-        const r = await auth.api.signOut({
-            headers: pickAuthHeaders(req),
-            asResponse: true,
-        });
-        forwardCookies(r, res);
-        res.status(200).json({ success: true });
+        return this.authService.logout(req, res);
     }
 
+    @UseGuards(AuthenticatedGuard)
     @Get('profile')
+    async profile(@Req() req: Request) {
+        return this.authService.profile(req);
+    }
+
+    @UseGuards(AuthenticatedGuard)
+    @Get('session')
     async session(@Req() req: Request) {
         return auth.api.getSession({ headers: pickAuthHeaders(req) });
     }
