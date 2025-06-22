@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ChangeEventHandler } from 'react'
 import { Label } from '@/components/shadcn/label'
 import { Input } from '@/components/shadcn/input'
 
@@ -8,7 +8,7 @@ interface IFormInputProps {
     type?: React.HTMLInputTypeAttribute
     required?: boolean
     value: string
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+    onChange: ChangeEventHandler<HTMLInputElement>
     optionalNote?: string
     className?: string
 }

@@ -1,9 +1,14 @@
 import React from 'react'
-import AuthForm from '@/app/(authLayout)/components/AuthForm'
 import { EAuthFormType } from '@/types/auth.types'
+import AuthContainer from '@/app/(authLayout)/components/AuthContainer'
+import RegisterForm from '@/app/(authLayout)/components/RegisterForm'
 
 const RegisterPage = () => {
-    return <AuthForm type={EAuthFormType.Register} />
+    return (
+        <AuthContainer type={EAuthFormType.Register}>
+            <RegisterForm />
+        </AuthContainer>
+    )
 }
 
 export default RegisterPage

@@ -1,7 +1,5 @@
 import React from 'react'
 import StoreProvider from '@/providers/StoreProvider'
-import { cookies } from 'next/headers'
-import { IUserData } from '@/types/auth.types'
 
 const Providers = async ({ children }: { children: React.ReactNode }) => {
     // const getCookies = await cookies()

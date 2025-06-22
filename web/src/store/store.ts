@@ -1,13 +1,14 @@
 'use client'
 import { Action, combineSlices, configureStore, ThunkAction } from '@reduxjs/toolkit'
+import { authApiSlice } from '@/store/features/auth/authApiSlice'
 
-const rootReducer = combineSlices()
+const rootReducer = combineSlices(authApiSlice)
 
 export const makeStore = () => {
     return configureStore({
         reducer: rootReducer,
         middleware: getDefaultMiddleware => {
-            return getDefaultMiddleware().concat()
+            return getDefaultMiddleware().concat(authApiSlice.middleware)
         },
     })
 }
