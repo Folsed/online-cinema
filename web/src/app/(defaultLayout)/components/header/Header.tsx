@@ -14,7 +14,7 @@ const Header = () => {
                     </button>
                     <Link
                         href={'/'}
-                        className='fill-primary flex items-center px-[10px] duration-200 hover:fill-white'
+                        className='fill-primary flex items-center px-[10px] duration-200 hover:fill-[#ffe9ac]'
                     >
                         <LogoInscription className='hidden w-[150px] sm:block' />
                         <Logo className='block w-[35px] sm:hidden' />
