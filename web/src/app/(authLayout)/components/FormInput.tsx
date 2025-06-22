@@ -11,6 +11,7 @@ interface IFormInputProps {
     onChange: ChangeEventHandler<HTMLInputElement>
     optionalNote?: string
     className?: string
+    error?: boolean
 }
 
 const FormInput: React.FC<IFormInputProps> = ({
@@ -22,6 +23,7 @@ const FormInput: React.FC<IFormInputProps> = ({
     onChange,
     optionalNote,
     className,
+    error,
 }) => {
     return (
         <div className={`relative grid gap-2 ${className}`}>
@@ -32,7 +34,7 @@ const FormInput: React.FC<IFormInputProps> = ({
                 required={required}
                 value={value}
                 onChange={onChange}
-                className='peer focus:border-primary block w-full appearance-none rounded-md border bg-white'
+                className={`peer focus:border-primary block w-full appearance-none rounded-md border bg-white ${error && 'border-b-primary border-b-2'}`}
             />
             <Label
                 htmlFor={id}

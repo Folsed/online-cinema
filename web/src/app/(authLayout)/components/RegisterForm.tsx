@@ -10,7 +10,7 @@ import { Loader2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 const RegisterForm = () => {
-    const [register, { isLoading, isSuccess }] = useRegisterMutation()
+    const [register, { isLoading, isSuccess, isError }] = useRegisterMutation()
     const router = useRouter()
     const { payload, handleChange, isValid } = usePayload<IRegisterPayload>({
         username: '',
@@ -36,6 +36,7 @@ const RegisterForm = () => {
                 id='username'
                 label='Username'
                 type='text'
+                error={isError}
                 required
                 value={payload.username}
                 onChange={handleChange('username')}
@@ -44,6 +45,7 @@ const RegisterForm = () => {
                 id='email'
                 label='Email Address'
                 type='email'
+                error={isError}
                 required
                 value={payload.email}
                 onChange={handleChange('email')}
@@ -52,6 +54,7 @@ const RegisterForm = () => {
             <FormInput
                 id='password'
                 label='Password'
+                error={isError}
                 type='password'
                 value={payload.password}
                 onChange={handleChange('password')}

@@ -9,7 +9,7 @@ import { ILoginPayload } from '@/types/auth.types'
 import { Loader2 } from 'lucide-react'
 
 const LoginForm = () => {
-    const [login, { isLoading, isSuccess }] = useLoginMutation()
+    const [login, { isLoading, isSuccess, isError }] = useLoginMutation()
     const router = useRouter()
     const { payload, handleChange, isValid } = usePayload<ILoginPayload>({
         email: '',
@@ -34,6 +34,7 @@ const LoginForm = () => {
                 label='Email Address'
                 type='email'
                 required
+                error={isError}
                 value={payload.email}
                 onChange={handleChange('email')}
             />
@@ -42,6 +43,7 @@ const LoginForm = () => {
                 id='password'
                 label='Password'
                 type='password'
+                error={isError}
                 value={payload.password}
                 onChange={handleChange('password')}
             />
