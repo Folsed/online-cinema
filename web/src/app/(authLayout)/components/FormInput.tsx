@@ -7,7 +7,7 @@ interface IFormInputProps {
     label: string
     type?: React.HTMLInputTypeAttribute
     required?: boolean
-    value: string
+    value?: string
     onChange: ChangeEventHandler<HTMLInputElement>
     optionalNote?: string
     className?: string
@@ -21,9 +21,10 @@ const FormInput: React.FC<IFormInputProps> = ({
     value,
     onChange,
     optionalNote,
+    className,
 }) => {
     return (
-        <div className='relative grid gap-2'>
+        <div className={`relative grid gap-2 ${className}`}>
             <Input
                 id={id}
                 type={type}

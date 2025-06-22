@@ -11,7 +11,7 @@ import { Loader2 } from 'lucide-react'
 const LoginForm = () => {
     const [login, { isLoading, isSuccess }] = useLoginMutation()
     const router = useRouter()
-    const { payload, handleChange } = usePayload<ILoginPayload>({
+    const { payload, handleChange, isValid } = usePayload<ILoginPayload>({
         email: '',
         password: '',
     })
@@ -45,7 +45,11 @@ const LoginForm = () => {
                 value={payload.password}
                 onChange={handleChange('password')}
             />
-            <Button type='submit' className='mt-6 w-full text-black uppercase'>
+            <Button
+                type='submit'
+                disabled={!isValid}
+                className='disabled:text-muted-foreground disabled:border-muted mt-6 w-full text-black uppercase disabled:border-2 disabled:bg-transparent'
+            >
                 {isLoading && <Loader2 className='h-4 w-4 animate-spin' />}
                 Log In
             </Button>

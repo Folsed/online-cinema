@@ -1,5 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { ILoginPayload, IRegisterPayload } from '@/types/auth.types'
+import {
+    ILoginPayload,
+    IRegisterPayload,
+    IResetPasswordConfirm,
+    IResetPasswordConfirmResponse,
+    IResetPasswordRequest,
+    IResetPasswordRequestResponse,
+} from '@/types/auth.types'
 
 export const authApiSlice = createApi({
     reducerPath: 'authApiSlice',
@@ -29,12 +36,34 @@ export const authApiSlice = createApi({
             invalidatesTags: ['auth'],
         }),
 
-        // POST auth/sign-out
-        // logout: build.mutation<void, void>({
-        //     query: () => ({ url: 'auth/sign-out', method: 'POST' }),
-        //     invalidatesTags: ['auth'],
-        // }),
+        // POST auth/logout
+        logout: build.mutation<void, void>({
+            query: () => ({ url: 'auth/logout', method: 'POST' }),
+            invalidatesTags: ['auth'],
+        }),
+
+        // POST auth/password-reset/request
+        resetPasswordRequest: build.mutation<IResetPasswordRequestResponse, IResetPasswordRequest>({
+            query: body => ({ url: 'auth/password-reset/request', method: 'POST', body }),
+            invalidatesTags: ['auth'],
+        }),
+
+        // POST auth/password-reset/confirm
+        resetPasswordConfirm: build.mutation<IResetPasswordConfirmResponse, IResetPasswordConfirm>({
+            query: body => ({
+                url: `auth/password-reset/confirm`,
+                method: 'POST',
+                body,
+            }),
+            invalidatesTags: ['auth'],
+        }),
     }),
 })
 
-export const { useLoginMutation, useRegisterMutation } = authApiSlice
+export const {
+    useLoginMutation,
+    useRegisterMutation,
+    useLogoutMutation,
+    useResetPasswordRequestMutation,
+    useResetPasswordConfirmMutation,
+} = authApiSlice

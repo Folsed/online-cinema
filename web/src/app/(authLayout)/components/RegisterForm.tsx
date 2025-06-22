@@ -12,7 +12,7 @@ import { useRouter } from 'next/navigation'
 const RegisterForm = () => {
     const [register, { isLoading, isSuccess }] = useRegisterMutation()
     const router = useRouter()
-    const { payload, handleChange } = usePayload<IRegisterPayload>({
+    const { payload, handleChange, isValid } = usePayload<IRegisterPayload>({
         username: '',
         email: '',
         password: '',
@@ -60,7 +60,11 @@ const RegisterForm = () => {
                 checked={payload.acceptTerms}
                 onCheckedChange={handleChange('acceptTerms')}
             />
-            <Button type='submit' className='mt-6 w-full text-black uppercase'>
+            <Button
+                type='submit'
+                disabled={!isValid}
+                className='disabled:text-muted-foreground disabled:border-muted mt-6 w-full text-black uppercase disabled:border-2 disabled:bg-transparent'
+            >
                 {isLoading && <Loader2 className='h-4 w-4 animate-spin' />}
                 Create Account
             </Button>
