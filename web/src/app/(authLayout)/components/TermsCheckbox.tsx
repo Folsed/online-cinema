@@ -7,7 +7,7 @@ interface ITermsCheckboxProps {
     onCheckedChange: (checked: boolean) => void
 }
 
-const TermsCheckbox: React.FC<ITermsCheckboxProps> = ({ id, checked, onCheckedChange }) => (
+const TermsCheckbox: React.FC<ITermsCheckboxProps> = ({ checked, onCheckedChange }) => (
     <div className='flex items-center space-x-2'>
         <Checkbox
             id='terms'

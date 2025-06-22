@@ -1,6 +1,5 @@
 import LogoInscription from '@/components/svgs/LogoInscription'
 import Link from 'next/link'
-import Image from 'next/image'
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
     return (
@@ -16,7 +15,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
                     <LogoInscription className='h-[30px]' />
                 </Link>
             </header>
-            <main className='z-20 '>{children}</main>
+            <main className='z-20'>{children}</main>
         </div>
     )
 }
