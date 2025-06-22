@@ -24,15 +24,7 @@ export class AuthService {
         });
 
         forwardCookies(betterRes, res);
-
-        const rawData = await betterRes.json();
-
-        const outData = plainToInstance(UserResponseDto, rawData, {
-            excludeExtraneousValues: true,
-        });
-
-        res.status(betterRes.status);
-        return rawData;
+        res.status(betterRes.status).json(await betterRes.json());
     }
 
     async login(dto: LoginDto, res: Response) {
