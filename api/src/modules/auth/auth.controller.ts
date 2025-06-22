@@ -28,8 +28,8 @@ export class AuthController {
     }
 
     @UseGuards(AuthenticatedGuard)
-    @Get('profile')
-    async profile(@Req() req: Request) {
+    @Get('me')
+    async me(@Req() req: Request) {
         return this.authService.profile(req);
     }
 
