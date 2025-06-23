@@ -6,6 +6,7 @@ import { hasLocale } from 'next-intl'
 import { routing } from '@/i18n/routing'
 import { notFound } from 'next/navigation'
 import { setRequestLocale } from 'next-intl/server'
+import { LocaleSwitcher } from '@/components/ui/LocaleSwitcher'
 
 const rubik = Rubik({
     subsets: ['latin'],
@@ -36,7 +37,10 @@ const RootLayout = async ({
     return (
         <html lang={locale}>
             <body className={`${rubik.className} antialiased`}>
-                <Providers>{children}</Providers>
+                <Providers>
+                    {children}
+                    <LocaleSwitcher />
+                </Providers>
             </body>
         </html>
     )

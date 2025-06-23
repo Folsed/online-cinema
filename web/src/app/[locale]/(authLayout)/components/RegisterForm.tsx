@@ -8,8 +8,10 @@ import { IRegisterPayload } from '@/types/auth.types'
 import { useRegisterMutation } from '@/store/features/auth/authApiSlice'
 import { Loader2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 const RegisterForm = () => {
+    const t = useTranslations('AuthContainer')
     const [register, { isLoading, isSuccess, isError }] = useRegisterMutation()
     const router = useRouter()
     const { payload, handleChange, isValid } = usePayload<IRegisterPayload>({
@@ -69,7 +71,7 @@ const RegisterForm = () => {
                 className='disabled:text-muted-foreground disabled:border-muted mt-6 w-full text-black uppercase disabled:border-2 disabled:bg-transparent'
             >
                 {isLoading && <Loader2 className='h-4 w-4 animate-spin' />}
-                Create Account
+                {t('create-account')}
             </Button>
         </form>
     )

@@ -7,8 +7,10 @@ import { Loader2 } from 'lucide-react'
 import { Button } from '@/components/shadcn/button'
 import { useResetPasswordConfirmMutation } from '@/store/features/auth/authApiSlice'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 const ResetPasswordConfirmForm = () => {
+    const t = useTranslations('AuthContainer')
     const router = useRouter()
     const params = useSearchParams()
     const TOKEN = params.get('token') || ''
@@ -46,7 +48,7 @@ const ResetPasswordConfirmForm = () => {
                 onChange={handleChange('newPassword')}
             />
             <FormInput
-                id='password'
+                id='new-password'
                 label='Confirm Password'
                 type='password'
                 value={payload.confirmPassword}
@@ -58,7 +60,7 @@ const ResetPasswordConfirmForm = () => {
                 className='disabled:text-muted-foreground disabled:border-muted mt-6 w-full text-black uppercase disabled:border-2 disabled:bg-transparent'
             >
                 {isLoading && <Loader2 className='h-4 w-4 animate-spin' />}
-                Reset Password
+                {t('reset-password')}
             </Button>
         </form>
     )

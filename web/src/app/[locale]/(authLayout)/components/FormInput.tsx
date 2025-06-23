@@ -1,6 +1,7 @@
 import React, { ChangeEventHandler } from 'react'
 import { Label } from '@/components/shadcn/label'
 import { Input } from '@/components/shadcn/input'
+import { useTranslations } from 'next-intl'
 
 interface IFormInputProps {
     id: string
@@ -25,6 +26,7 @@ const FormInput: React.FC<IFormInputProps> = ({
     className,
     error,
 }) => {
+    const t = useTranslations('AuthContainer.Inputs')
     return (
         <div className={`relative grid gap-2 ${className}`}>
             <Input
@@ -40,7 +42,7 @@ const FormInput: React.FC<IFormInputProps> = ({
                 htmlFor={id}
                 className={`peer-focus:text-primary pointer-events-none absolute -top-4 left-0 text-gray-500 transition-all duration-200 peer-placeholder-shown:top-3 peer-placeholder-shown:left-3 peer-focus:-top-4 peer-focus:left-0`}
             >
-                {label}
+                {t(id)}
                 {optionalNote && <span className='text-muted-foreground'> {optionalNote}</span>}
             </Label>
         </div>

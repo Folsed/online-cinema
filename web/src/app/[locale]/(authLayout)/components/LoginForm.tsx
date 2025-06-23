@@ -7,8 +7,10 @@ import { useRouter } from 'next/navigation'
 import { usePayload } from '@/hooks/usePayload'
 import { ILoginPayload } from '@/types/auth.types'
 import { Loader2 } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 const LoginForm = () => {
+    const t = useTranslations('AuthContainer')
     const [login, { isLoading, isSuccess, isError }] = useLoginMutation()
     const router = useRouter()
     const { payload, handleChange, isValid } = usePayload<ILoginPayload>({
@@ -53,7 +55,7 @@ const LoginForm = () => {
                 className='disabled:text-muted-foreground disabled:border-muted mt-6 w-full text-black uppercase disabled:border-2 disabled:bg-transparent'
             >
                 {isLoading && <Loader2 className='h-4 w-4 animate-spin' />}
-                Log In
+                {t('log-in')}
             </Button>
         </form>
     )

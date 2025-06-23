@@ -1,6 +1,29 @@
 {
-    "HomePage": {
-        "title": "Hello world!",
-        "about": "Go to the about page"
+    "Header": {
+        "catalog": "Catalog",
+        "news": "News",
+        "manga": "Manga"
+    },
+    "AuthContainer": {
+        "log-in": "Log in",
+        "create-account": "Create account",
+        "reset-password": "Reset password",
+        "create-new-password": "Create New Password",
+        "send-email": "Send Email",
+        "cancel": "Cancel",
+        "TermsCheckbox": {
+            "label": "Accept terms and conditions"
+        },
+        "forgot": "Forgot Password?",
+        "exists": "Already have an account?",
+        "Inputs": {
+            "username": "Username",
+            "email": "Email address",
+            "password": "Password",
+            "new-password": "New Password"
+        },
+        "ResetPassword": {
+            "warning": "A link will be sent to your email address to reset your password. Your IP address may be logged for security purposes."
+        }
     }
 }

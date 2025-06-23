@@ -6,8 +6,10 @@ import Logo from '@/components/svgs/Logo'
 import { ChevronDown, Menu, Search, UserRound } from 'lucide-react'
 import { useLogoutMutation } from '@/store/features/auth/authApiSlice'
 import { useAppSelector } from '@/store/hooks'
+import { useTranslations } from 'next-intl'
 
 const Header = () => {
+    const t = useTranslations('Header')
     const [logout] = useLogoutMutation()
     const user = useAppSelector(state => state.auth.user?.user)
 
@@ -32,7 +34,7 @@ const Header = () => {
 
                     <div className='hidden md:flex'>
                         <button className='hover:bg-tertiary-active hover:text-secondary-foreground flex h-full cursor-pointer items-center px-3 duration-200'>
-                            <span>Каталог</span>
+                            <span>{t('catalog')}</span>
                             <ChevronDown size={20} />
                         </button>
 
@@ -40,14 +42,14 @@ const Header = () => {
                             href={''}
                             className='hover:bg-tertiary-active hover:text-secondary-foreground flex h-full cursor-pointer items-center px-3 duration-200'
                         >
-                            Новини
+                            {t('news')}
                         </Link>
 
                         <Link
                             href={''}
                             className='hover:hover:bg-tertiary-active hover:text-secondary-foreground flex h-full cursor-pointer items-center px-3 duration-200'
                         >
-                            Манга
+                            {t('manga')}
                         </Link>
                     </div>
                 </div>
