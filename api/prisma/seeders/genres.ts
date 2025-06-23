@@ -2,24 +2,15 @@ import { PrismaClient } from '@prisma/client';
 
 type TGenreSeed = {
     slug: string;
-    translations: Record<string, { name: string; description?: string }>;
+    translations: Record<string, string>;
 };
 
 const GENRES: TGenreSeed[] = [
-    {
-        slug: 'action',
-        translations: {
-            uk: { name: 'Екшн', description: 'Жанр із динамічними сценами та пригодами' },
-            en: { name: 'Action', description: 'Genre with dynamic scenes and adventures' },
-        },
-    },
-    {
-        slug: 'drama',
-        translations: {
-            uk: { name: 'Драма', description: 'Сюжет, що заглиблюється в емоції персонажів' },
-            en: { name: 'Drama', description: "Plot focusing on characters' emotions" },
-        },
-    },
+    { slug: 'action', translations: { uk: 'Екшн', en: 'Action' } },
+    { slug: 'drama', translations: { uk: 'Драма', en: 'Drama' } },
+    { slug: 'thriller', translations: { uk: 'Трилер', en: 'Thriller' } },
+    { slug: 'horror', translations: { uk: 'Жахи', en: 'Horror' } },
+    { slug: 'sci-fi', translations: { uk: 'Наукова фантастика', en: 'Sci-Fi' } },
 ];
 
 export async function seedGenres(prisma: PrismaClient) {
@@ -30,13 +21,10 @@ export async function seedGenres(prisma: PrismaClient) {
             create: {
                 slug: genre.slug,
                 GenresTranslations: {
-                    create: Object.entries(genre.translations).map(
-                        ([langCode, { name, description }]) => ({
-                            langCode,
-                            name,
-                            description,
-                        }),
-                    ),
+                    create: Object.entries(genre.translations).map(([langCode, name]) => ({
+                        langCode,
+                        name,
+                    })),
                 },
             },
         });

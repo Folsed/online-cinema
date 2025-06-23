@@ -1,0 +1,332 @@
+[
+    {
+        "type": "movie",
+        "originalTitle": "Inception",
+        "alias": "inception",
+        "releaseDate": "2010-07-16T00:00:00.000Z",
+        "runtime": 148,
+        "status": "release",
+        "metadata": {
+            "director": "Christopher Nolan"
+        },
+        "active": true,
+        "translations": {
+            "uk": {
+                "posterTitle": "Початок",
+                "synopsis": "Фільм про крадіжку ідей із снів."
+            },
+            "en": {
+                "posterTitle": "Inception",
+                "synopsis": "A thief who steals corporate secrets through dream-sharing technology."
+            }
+        }
+    },
+    {
+        "type": "series",
+        "originalTitle": "Stranger Things",
+        "alias": "stranger-things",
+        "releaseDate": "2016-07-15T00:00:00.000Z",
+        "runtime": 50,
+        "status": "release",
+        "metadata": {
+            "seasons": 3
+        },
+        "active": true,
+        "translations": {
+            "uk": {
+                "posterTitle": "Дивні справи",
+                "synopsis": "Серіал про дітей і надприродні події."
+            },
+            "en": {
+                "posterTitle": "Stranger Things",
+                "synopsis": "When a young boy disappears, his friends unravel supernatural mysteries."
+            }
+        }
+    },
+    {
+        "type": "movie",
+        "originalTitle": "The Matrix",
+        "alias": "the-matrix",
+        "releaseDate": "1999-03-31T00:00:00.000Z",
+        "runtime": 136,
+        "status": "release",
+        "metadata": {
+            "director": "Lana Wachowski, Lilly Wachowski"
+        },
+        "active": true,
+        "translations": {
+            "uk": {
+                "posterTitle": "Матриця",
+                "synopsis": "Хакер дізнається, що реальність — це ілюзія."
+            },
+            "en": {
+                "posterTitle": "The Matrix",
+                "synopsis": "A hacker discovers the world is a simulated reality."
+            }
+        }
+    },
+    {
+        "type": "movie",
+        "originalTitle": "Spirited Away",
+        "alias": "spirited-away",
+        "releaseDate": "2001-07-20T00:00:00.000Z",
+        "runtime": 125,
+        "status": "release",
+        "metadata": {
+            "director": "Hayao Miyazaki"
+        },
+        "active": true,
+        "translations": {
+            "uk": {
+                "posterTitle": "Унесені привидами",
+                "synopsis": "Дівчинка потрапляє у світ духів."
+            },
+            "en": {
+                "posterTitle": "Spirited Away",
+                "synopsis": "A girl becomes trapped in a spirit world and must save her parents."
+            }
+        }
+    },
+    {
+        "type": "series",
+        "originalTitle": "Breaking Bad",
+        "alias": "breaking-bad",
+        "releaseDate": "2008-01-20T00:00:00.000Z",
+        "runtime": 47,
+        "status": "release",
+        "metadata": {
+            "seasons": 5
+        },
+        "active": true,
+        "translations": {
+            "uk": {
+                "posterTitle": "Поганий",
+                "synopsis": "Вчитель хімії стає виробником метамфетаміну."
+            },
+            "en": {
+                "posterTitle": "Breaking Bad",
+                "synopsis": "A chemistry teacher turns to manufacturing meth to secure his family's future."
+            }
+        }
+    },
+    {
+        "type": "series",
+        "originalTitle": "Avatar: The Last Airbender",
+        "alias": "avatar-the-last-airbender",
+        "releaseDate": "2005-02-21T00:00:00.000Z",
+        "runtime": 23,
+        "status": "release",
+        "metadata": {
+            "seasons": 3
+        },
+        "active": true,
+        "translations": {
+            "uk": {
+                "posterTitle": "Аватар: Останній маг повітря",
+                "synopsis": "Хлопчик зможе керувати всіма стихіями."
+            },
+            "en": {
+                "posterTitle": "Avatar: The Last Airbender",
+                "synopsis": "A young boy can bend all four elements to save the world."
+            }
+        }
+    },
+    {
+        "type": "anime",
+        "originalTitle": "Attack on Titan",
+        "alias": "attack-on-titan",
+        "releaseDate": "2013-04-07T00:00:00.000Z",
+        "runtime": 24,
+        "status": "release",
+        "metadata": {
+            "episodes": 75
+        },
+        "active": true,
+        "translations": {
+            "uk": {
+                "posterTitle": "Атака на титанів",
+                "synopsis": "Людство бореться з велетнями, що поїдають людей."
+            },
+            "en": {
+                "posterTitle": "Attack on Titan",
+                "synopsis": "Humanity fights against gigantic humanoid Titans."
+            }
+        }
+    },
+    {
+        "type": "anime",
+        "originalTitle": "Your Name",
+        "alias": "your-name",
+        "releaseDate": "2016-08-26T00:00:00.000Z",
+        "runtime": 106,
+        "status": "release",
+        "metadata": {
+            "director": "Makoto Shinkai"
+        },
+        "active": true,
+        "translations": {
+            "uk": {
+                "posterTitle": "Твоє ім’я",
+                "synopsis": "Двоє підлітків обмінюються тілами час від часу."
+            },
+            "en": {
+                "posterTitle": "Your Name",
+                "synopsis": "Two teenagers find themselves swapping bodies intermittently."
+            }
+        }
+    },
+    {
+        "type": "anime",
+        "originalTitle": "Fullmetal Alchemist: Brotherhood",
+        "alias": "fullmetal-alchemist-brotherhood",
+        "releaseDate": "2009-04-05T00:00:00.000Z",
+        "runtime": 24,
+        "status": "release",
+        "metadata": {
+            "episodes": 64
+        },
+        "active": true,
+        "translations": {
+            "uk": {
+                "posterTitle": "Братство сталевого алхіміка",
+                "synopsis": "Брати шукають камінь філософів, щоб відновити тіла."
+            },
+            "en": {
+                "posterTitle": "Fullmetal Alchemist: Brotherhood",
+                "synopsis": "Two brothers search for the Philosopher's Stone after a failed alchemy ritual."
+            }
+        }
+    },
+    {
+        "type": "movie",
+        "originalTitle": "The Godfather",
+        "alias": "the-godfather",
+        "releaseDate": "1972-03-24T00:00:00.000Z",
+        "runtime": 175,
+        "status": "release",
+        "metadata": {
+            "director": "Francis Ford Coppola"
+        },
+        "active": true,
+        "translations": {
+            "uk": {
+                "posterTitle": "Хрещений батько",
+                "synopsis": "Історія мафіозної родини Корлеоне."
+            },
+            "en": {
+                "posterTitle": "The Godfather",
+                "synopsis": "The aging patriarch of an organized crime dynasty transfers control to his son."
+            }
+        }
+    },
+    {
+        "type": "series",
+        "originalTitle": "The Witcher",
+        "alias": "the-witcher",
+        "releaseDate": "2019-12-20T00:00:00.000Z",
+        "runtime": 60,
+        "status": "release",
+        "metadata": {
+            "seasons": 2
+        },
+        "active": true,
+        "translations": {
+            "uk": {
+                "posterTitle": "Відьмак",
+                "synopsis": "Мутований мисливець на монстрів мандрує континентом."
+            },
+            "en": {
+                "posterTitle": "The Witcher",
+                "synopsis": "A mutated monster hunter struggles to find his place in a world of beasts and humans."
+            }
+        }
+    },
+    {
+        "type": "series",
+        "originalTitle": "Game of Thrones",
+        "alias": "game-of-thrones",
+        "releaseDate": "2011-04-17T00:00:00.000Z",
+        "runtime": 57,
+        "status": "release",
+        "metadata": {
+            "seasons": 8
+        },
+        "active": true,
+        "translations": {
+            "uk": {
+                "posterTitle": "Гра престолів",
+                "synopsis": "Боротьба за владу над Семи Королівствами."
+            },
+            "en": {
+                "posterTitle": "Game of Thrones",
+                "synopsis": "Nine noble families fight for control over the lands of Westeros."
+            }
+        }
+    },
+    {
+        "type": "anime",
+        "originalTitle": "Naruto",
+        "alias": "naruto",
+        "releaseDate": "2002-10-03T00:00:00.000Z",
+        "runtime": 23,
+        "status": "release",
+        "metadata": {
+            "episodes": 220
+        },
+        "active": true,
+        "translations": {
+            "uk": {
+                "posterTitle": "Наруто",
+                "synopsis": "Молодий ніндзя мріє стати лідером села."
+            },
+            "en": {
+                "posterTitle": "Naruto",
+                "synopsis": "A young ninja seeks recognition and dreams of becoming Hokage."
+            }
+        }
+    },
+    {
+        "type": "anime",
+        "originalTitle": "Death Note",
+        "alias": "death-note",
+        "releaseDate": "2006-10-04T00:00:00.000Z",
+        "runtime": 23,
+        "status": "release",
+        "metadata": {
+            "episodes": 37
+        },
+        "active": true,
+        "translations": {
+            "uk": {
+                "posterTitle": "Зошит смерті",
+                "synopsis": "Зошит може вбивати людину, якщо записати її імя."
+            },
+            "en": {
+                "posterTitle": "Death Note",
+                "synopsis": "A notebook grants the power to kill anyone whose name is written within."
+            }
+        }
+    },
+    {
+        "type": "movie",
+        "originalTitle": "Interstellar",
+        "alias": "interstellar",
+        "releaseDate": "2014-11-07T00:00:00.000Z",
+        "runtime": 169,
+        "status": "release",
+        "metadata": {
+            "director": "Christopher Nolan"
+        },
+        "active": true,
+        "translations": {
+            "uk": {
+                "posterTitle": "Інтерстеллар",
+                "synopsis": "Група дослідників подорожує через космічну аномалію для порятунку людства."
+            },
+            "en": {
+                "posterTitle": "Interstellar",
+                "synopsis": "Explorers travel through a wormhole in space in an attempt to ensure humanity's survival."
+            }
+        }
+    }
+]
