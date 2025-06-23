@@ -6,7 +6,7 @@ interface ISendResetPasswordArgs {
 }
 
 export async function sendResetPasswordEmail({ user, token }: ISendResetPasswordArgs) {
-    const resetLink = `${process.env.BASE_WEB_URL}/?modal=reset-password&email=${user.email}&token=${encodeURIComponent(token)}`;
+    const resetLink = `${process.env.BASE_WEB_URL}/reset-password/confirmed?token=${encodeURIComponent(token)}`;
     await transporter.sendMail({
         from: `"No Reply" <${process.env.MAIL_FROM}>`,
         to: user.email,
