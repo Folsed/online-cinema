@@ -1,7 +1,7 @@
 import React from 'react'
-import AuthContainer from '@/app/(authLayout)/components/AuthContainer'
+import AuthContainer from '@/app/[locale]/(authLayout)/components/AuthContainer'
 import { EAuthFormType } from '@/types/auth.types'
-import LoginForm from '@/app/(authLayout)/components/LoginForm'
+import LoginForm from '@/app/[locale]/(authLayout)/components/LoginForm'
 
 const LoginPage = () => {
     return (

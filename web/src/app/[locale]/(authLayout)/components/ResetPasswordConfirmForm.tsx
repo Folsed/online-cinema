@@ -1,6 +1,6 @@
 'use client'
 import React, { FormEvent, useEffect } from 'react'
-import FormInput from '@/app/(authLayout)/components/FormInput'
+import FormInput from '@/app/[locale]/(authLayout)/components/FormInput'
 import { usePayload } from '@/hooks/usePayload'
 import { IResetPasswordConfirm, IResetPasswordRequest } from '@/types/auth.types'
 import { Loader2 } from 'lucide-react'

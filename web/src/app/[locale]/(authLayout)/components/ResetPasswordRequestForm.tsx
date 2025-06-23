@@ -1,13 +1,13 @@
 'use client'
 import React, { FormEvent } from 'react'
-import FormInput from '@/app/(authLayout)/components/FormInput'
+import FormInput from '@/app/[locale]/(authLayout)/components/FormInput'
 import { usePayload } from '@/hooks/usePayload'
 import { IResetPasswordRequest } from '@/types/auth.types'
 import { Loader2 } from 'lucide-react'
 import { Button } from '@/components/shadcn/button'
 import { useResetPasswordRequestMutation } from '@/store/features/auth/authApiSlice'
 import Link from 'next/link'
-import ResetRequestSuccess from '@/app/(authLayout)/components/ResetRequestSuccess'
+import ResetRequestSuccess from '@/app/[locale]/(authLayout)/components/ResetRequestSuccess'
 
 const ResetPasswordRequestForm = () => {
     const { payload, handleChange, isValid } = usePayload<IResetPasswordRequest>({ email: '' })

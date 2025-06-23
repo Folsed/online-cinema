@@ -1,6 +1,6 @@
 'use client'
 import React, { FormEvent, useEffect } from 'react'
-import FormInput from '@/app/(authLayout)/components/FormInput'
+import FormInput from '@/app/[locale]/(authLayout)/components/FormInput'
 import { Button } from '@/components/shadcn/button'
 import { useLoginMutation } from '@/store/features/auth/authApiSlice'
 import { useRouter } from 'next/navigation'

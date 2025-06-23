@@ -1,7 +1,7 @@
 import React from 'react'
-import AuthContainer from '@/app/(authLayout)/components/AuthContainer'
+import AuthContainer from '@/app/[locale]/(authLayout)/components/AuthContainer'
 import { EAuthFormType } from '@/types/auth.types'
-import ResetPasswordRequestForm from '@/app/(authLayout)/components/ResetPasswordRequestForm'
+import ResetPasswordRequestForm from '@/app/[locale]/(authLayout)/components/ResetPasswordRequestForm'
 
 const RequestPage = () => {
     return (
