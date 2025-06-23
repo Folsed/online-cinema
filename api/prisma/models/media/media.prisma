@@ -1,0 +1,39 @@
+enum MediaType {
+  movie
+  series
+}
+
+enum MediaStatus {
+  upcoming
+  release
+  cancelled
+}
+
+model Media {
+  id                String              @id @default(uuid())
+  type              MediaType
+  originalTitle     String              @map("original_title")
+  alias             String
+  releaseDate       DateTime            @map("release_date")
+  runtime           Int
+  status            MediaStatus
+  metadata          Json?
+  active            Boolean
+  createdAt         DateTime            @default(now()) @map("created_at")
+  updatedAt         DateTime            @updatedAt @map("updated_at")
+  MediaTranslations MediaTranslations[]
+
+  @@map("media")
+}
+
+model MediaTranslations {
+  mediaId     String
+  media       Media    @relation(fields: [mediaId], references: [id])
+  langCode    String   @map("lang_code")
+  lang        Language @relation(fields: [langCode], references: [code])
+  posterTitle String   @map("poster_title")
+  synopsis    String
+
+  @@id([mediaId, langCode])
+  @@map("media_translations")
+}
