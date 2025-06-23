@@ -1,10 +1,20 @@
+'use client'
 import React from 'react'
 import Link from 'next/link'
 import LogoInscription from '@/components/svgs/LogoInscription'
 import Logo from '@/components/svgs/Logo'
 import { ChevronDown, Menu, Search, UserRound } from 'lucide-react'
+import { useLogoutMutation } from '@/store/features/auth/authApiSlice'
+import { useAppSelector } from '@/store/hooks'
 
 const Header = () => {
+    const [logout] = useLogoutMutation()
+    const user = useAppSelector(state => state.auth.user?.user)
+
+    const handleLogout = async () => {
+        await logout()
+    }
+
     return (
         <div className='bg-tertiary fixed z-50 flex h-[60px] w-full justify-center'>
             <div className='content-padding flex w-full justify-between max-md:p-0'>
@@ -14,7 +24,7 @@ const Header = () => {
                     </button>
                     <Link
                         href={'/'}
-                        className='fill-primary flex items-center px-[10px] duration-200 hover:fill-white'
+                        className='fill-primary flex items-center px-[10px] duration-200 hover:fill-[#ffe9ac]'
                     >
                         <LogoInscription className='hidden w-[150px] sm:block' />
                         <Logo className='block w-[35px] sm:hidden' />
@@ -48,13 +58,22 @@ const Header = () => {
                     >
                         <Search size={22} />
                     </button>
-                    <Link
-                        className='hover:hover:bg-tertiary-active hover:text-secondary-foreground flex h-full cursor-pointer items-center px-4 duration-200'
-                        href={'/login'}
-                        title='Вхід в акаунт'
-                    >
-                        <UserRound size={24} />
-                    </Link>
+                    {user ? (
+                        <button
+                            onClick={handleLogout}
+                            className='hover:hover:bg-tertiary-active hover:text-secondary-foreground flex h-full cursor-pointer items-center px-4 capitalize duration-200'
+                        >
+                            {user && user.name}
+                        </button>
+                    ) : (
+                        <Link
+                            className='hover:hover:bg-tertiary-active hover:text-secondary-foreground flex h-full cursor-pointer items-center px-4 duration-200'
+                            href={'/login'}
+                            title='Вхід в акаунт'
+                        >
+                            <UserRound size={24} />
+                        </Link>
+                    )}
                 </div>
             </div>
         </div>
