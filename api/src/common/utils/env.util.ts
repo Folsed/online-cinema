@@ -1,6 +1,10 @@
 import { ConfigService } from '@nestjs/config';
 
-type Env = 'development' | 'production' | 'test';
+export enum Env {
+    Development = 'development',
+    Production = 'production',
+    Test = 'test',
+}
 
 export const isProd = (configService: ConfigService): boolean =>
     configService.getOrThrow('NODE_ENV') === 'production';
