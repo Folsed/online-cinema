@@ -9,13 +9,13 @@ import { join } from 'path';
 @Module({
     imports: [
         ConfigModule.forRoot({ isGlobal: true }),
-        PrismaModule,
-        AuthModule,
-        MediaModule,
         ServeStaticModule.forRoot({
             rootPath: join(process.cwd(), 'storage'),
             serveRoot: '/storage',
         }),
+        PrismaModule,
+        AuthModule,
+        MediaModule,
     ],
     controllers: [],
     providers: [],
