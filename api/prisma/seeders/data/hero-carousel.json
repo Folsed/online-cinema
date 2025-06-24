@@ -1,0 +1,37 @@
+[
+    {
+        "mediaId": "607dbda0-c96c-47ec-9bd1-18060e857f0a",
+        "slidePosition": 1,
+        "active": true,
+        "desktopImageUrl": "storage/images/hero/games.jpg",
+        "mobileImageUrl": "storage/images/hero/games-mobile.jpg"
+    },
+    {
+        "mediaId": "738d9764-5829-4a2e-aa1c-8bd506297e77",
+        "slidePosition": 2,
+        "active": true,
+        "desktopImageUrl": "storage/images/hero/crunch.jpg",
+        "mobileImageUrl": "storage/images/hero/crunch-mobile.jpg"
+    },
+    {
+        "mediaId": "8c08547e-71c8-43bd-8917-5642227b3487",
+        "slidePosition": 3,
+        "active": true,
+        "desktopImageUrl": "storage/images/hero/shangri-la.webp",
+        "mobileImageUrl": "storage/images/hero/shangri-la-mobile.jpg"
+    },
+    {
+        "mediaId": "a5e98743-f832-42e2-9f82-ba30c4afed6e",
+        "slidePosition": 4,
+        "active": true,
+        "desktopImageUrl": "storage/images/hero/solo.webp",
+        "mobileImageUrl": "storage/images/hero/solo-mobile.jpg"
+    },
+    {
+        "mediaId": "a6b281ab-b4c4-494e-b3c6-0dd24860265e",
+        "slidePosition": 5,
+        "active": true,
+        "desktopImageUrl": "storage/images/hero/warcraft.jpg",
+        "mobileImageUrl": "storage/images/hero/warcraft-mobile.jpg"
+    }
+]
