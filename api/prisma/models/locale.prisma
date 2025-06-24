@@ -1,0 +1,8 @@
+model Language {
+  code               String              @id
+  name               String
+  MediaTranslations  MediaTranslations[]
+  GenresTranslations GenreTranslations[]
+
+  @@map("languages")
+}

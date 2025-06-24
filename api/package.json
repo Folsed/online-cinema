@@ -17,7 +17,8 @@
         "test:watch": "jest --watch",
         "test:cov": "jest --coverage",
         "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-        "test:e2e": "jest --config ./test/jest-e2e.json"
+        "test:e2e": "jest --config ./test/jest-e2e.json",
+        "seed": "prisma db seed"
     },
     "dependencies": {
         "@nestjs/common": "^11.0.1",
@@ -26,6 +27,7 @@
         "@nestjs/mapped-types": "*",
         "@nestjs/passport": "^11.0.5",
         "@nestjs/platform-express": "^11.0.1",
+        "@nestjs/serve-static": "^5.0.3",
         "@prisma/client": "^6.10.1",
         "better-auth": "^1.2.10",
         "class-transformer": "^0.5.1",
@@ -95,6 +97,7 @@
         "testEnvironment": "node"
     },
     "prisma": {
-        "schema": "prisma"
+        "schema": "prisma",
+        "seed": "ts-node prisma/seed.ts"
     }
 }
