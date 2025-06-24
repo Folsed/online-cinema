@@ -25,5 +25,8 @@
         "ResetPassword": {
             "warning": "A link will be sent to your email address to reset your password. Your IP address may be logged for security purposes."
         }
+    },
+    "HeroCarousel": {
+        "button": "Start Watching"
     }
 }

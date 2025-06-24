@@ -2,7 +2,9 @@ import type { NextConfig } from 'next'
 import createNextIntlPlugin from 'next-intl/plugin'
 
 const nextConfig: NextConfig = {
-    /* config options here */
+    images: {
+        remotePatterns: [new URL('http://localhost:4000/storage/**')],
+    },
 }
 
 const withNextIntl = createNextIntlPlugin()

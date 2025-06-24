@@ -15,7 +15,7 @@ export function LocaleSwitcher() {
     }
 
     return (
-        <div className='absolute right-0 bottom-0'>
+        <div className='absolute right-0 bottom-0 z-50'>
             <div className='flex gap-2'>
                 <Button variant='ghost' onClick={() => switchLocale('en')}>
                     EN

@@ -1,4 +1,4 @@
-interface IUserData {
+export interface IUserData {
     redirect?: boolean
     token: string
     user: {
