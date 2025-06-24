@@ -1,5 +1,5 @@
 import MEDIA_DATA from './data/media.json';
-import type { MediaType, MediaStatus, PrismaClient } from '@prisma/client';
+import type { MediaType, MediaStatus, PrismaClient, MediaImageType } from '@prisma/client';
 
 interface IMediaSeed {
     type: MediaType;
@@ -11,6 +11,7 @@ interface IMediaSeed {
     metadata?: object;
     active: boolean;
     translations: Record<string, { posterTitle: string; synopsis: string }>;
+    images: Record<MediaImageType, { url: string; width: number; height: number; altText: string }>;
 }
 
 export async function seedMedia(prisma: PrismaClient) {
@@ -36,9 +37,20 @@ export async function seedMedia(prisma: PrismaClient) {
                         }),
                     ),
                 },
+                MediaImages: {
+                    create: Object.entries(m.images || {}).map(
+                        ([type, { url, width, height, altText }]) => ({
+                            type: type as MediaImageType,
+                            url,
+                            width,
+                            height,
+                            altText,
+                        }),
+                    ),
+                },
             },
         });
     }
 
-    console.log(`✅ Seeded ${mediaData.length} media items with translations`);
+    console.log(`✅ Seeded ${mediaData.length} media items with translations and images`);
 }

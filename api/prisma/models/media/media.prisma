@@ -24,6 +24,8 @@ model Media {
   updatedAt         DateTime            @updatedAt @map("updated_at")
   MediaTranslations MediaTranslations[]
   GenresOnMedia     GenresOnMedia[]
+  MediaImages       MediaImages[]
+  HomepageCarousel  HomepageCarousel?
 
   @@map("media")
 }
@@ -38,4 +40,27 @@ model MediaTranslations {
 
   @@id([mediaId, langCode])
   @@map("media_translations")
+}
+
+enum MediaImageType {
+  poster
+  logo
+  backdrop
+  thumbnail
+}
+
+model MediaImages {
+  id        String         @id @default(uuid())
+  mediaId   String         @map("media_id")
+  media     Media          @relation(fields: [mediaId], references: [id])
+  type      MediaImageType
+  url       String
+  width     Int
+  height    Int
+  altText   String         @map("alt_text")
+  metadata  Json?
+  createdAt DateTime       @default(now()) @map("created_at")
+  updatedAt DateTime       @updatedAt @map("updated_at")
+
+  @@map("media_images")
 }

@@ -19,6 +19,20 @@
                 "posterTitle": "Inception",
                 "synopsis": "A thief who steals corporate secrets through dream-sharing technology."
             }
+        },
+        "images": {
+            "poster": {
+                "url": "storage/images/poster/5AkEYkxSf9djJTeDXyYNGsLYiJ1gvL5xHDelHLs8.jpg",
+                "width": 340,
+                "height": 460,
+                "altText": "Inception Poster"
+            },
+            "logo": {
+                "url": "storage/images/poster/BEPMGvmY7dpMo3KWXeIB7jZYgi2RfVAOCU4hoye1.jpg",
+                "width": 500,
+                "height": 500,
+                "altText": "Inception Poster"
+            }
         }
     },
     {
@@ -40,6 +54,20 @@
             "en": {
                 "posterTitle": "Stranger Things",
                 "synopsis": "When a young boy disappears, his friends unravel supernatural mysteries."
+            }
+        },
+        "images": {
+            "poster": {
+                "url": "storage/images/poster/5NrBKyTFEU9gzovowkYqvjp3AQtGlybsp6AsCj7K.jpg",
+                "width": 340,
+                "height": 460,
+                "altText": "Inception Poster"
+            },
+            "logo": {
+                "url": "storage/images/poster/D9NkJOSRdkKTBNIY1Re9PgTzOHwoeDevvyktjI2I.jpg",
+                "width": 500,
+                "height": 500,
+                "altText": "Inception Poster"
             }
         }
     },
@@ -63,6 +91,20 @@
                 "posterTitle": "The Matrix",
                 "synopsis": "A hacker discovers the world is a simulated reality."
             }
+        },
+        "images": {
+            "poster": {
+                "url": "storage/images/poster/6rxxxCLW3tNehhsorgR6OIHERQRmdgexOVqEdbwy.jpg",
+                "width": 340,
+                "height": 460,
+                "altText": "Inception Poster"
+            },
+            "logo": {
+                "url": "storage/images/poster/dgXN3tpoEGlEkLbTHFiikdQY7GfHDmIT2tLlwtpe.jpg",
+                "width": 500,
+                "height": 500,
+                "altText": "Inception Poster"
+            }
         }
     },
     {
@@ -84,6 +126,20 @@
             "en": {
                 "posterTitle": "Spirited Away",
                 "synopsis": "A girl becomes trapped in a spirit world and must save her parents."
+            }
+        },
+        "images": {
+            "poster": {
+                "url": "storage/images/poster/46Oyr7ctd34ks0EOi1LEA9R5pW0s7myYMgjdaHQR.jpg",
+                "width": 340,
+                "height": 460,
+                "altText": "Inception Poster"
+            },
+            "logo": {
+                "url": "storage/images/poster/djA1PBXF6n1ufy6MwFE2toDzsZz9gYpsnwmuBRi1.jpg",
+                "width": 500,
+                "height": 500,
+                "altText": "Inception Poster"
             }
         }
     },
@@ -107,6 +163,20 @@
                 "posterTitle": "Breaking Bad",
                 "synopsis": "A chemistry teacher turns to manufacturing meth to secure his family's future."
             }
+        },
+        "images": {
+            "poster": {
+                "url": "storage/images/poster/BStnP7OChkCrfRKCOMvzEWrzCrOiS3pGlnaqDwgr.jpg",
+                "width": 340,
+                "height": 460,
+                "altText": "Inception Poster"
+            },
+            "logo": {
+                "url": "storage/images/poster/mJzeXnYTkwaECtoEM5GrUv1CJKW55Mg6khofm6oV.jpg",
+                "width": 500,
+                "height": 500,
+                "altText": "Inception Poster"
+            }
         }
     },
     {
@@ -128,6 +198,20 @@
             "en": {
                 "posterTitle": "Avatar: The Last Airbender",
                 "synopsis": "A young boy can bend all four elements to save the world."
+            }
+        },
+        "images": {
+            "poster": {
+                "url": "storage/images/poster/Cn3fZrRVPGQcq5G1iRZa9IAhXKMiaeYPfPl7LZIa.jpg",
+                "width": 340,
+                "height": 460,
+                "altText": "Inception Poster"
+            },
+            "logo": {
+                "url": "storage/images/poster/mPsYoYIrrPVUSxBUSTJkQ3klPJn5cmVytBmoGQUm.jpg",
+                "width": 500,
+                "height": 500,
+                "altText": "Inception Poster"
             }
         }
     },
@@ -151,6 +235,20 @@
                 "posterTitle": "Attack on Titan",
                 "synopsis": "Humanity fights against gigantic humanoid Titans."
             }
+        },
+        "images": {
+            "poster": {
+                "url": "storage/images/poster/kmyEVHzlfE9hTE1yBH4ar4caja1Dd9N4vVIOZ7Bz.jpg",
+                "width": 340,
+                "height": 460,
+                "altText": "Inception Poster"
+            },
+            "logo": {
+                "url": "storage/images/poster/nATU0C86MWtsRsxbpXCXC1edarOIcb0DjxAdbwZs.jpg",
+                "width": 500,
+                "height": 500,
+                "altText": "Inception Poster"
+            }
         }
     },
     {
@@ -172,6 +270,20 @@
             "en": {
                 "posterTitle": "Your Name",
                 "synopsis": "Two teenagers find themselves swapping bodies intermittently."
+            }
+        },
+        "images": {
+            "poster": {
+                "url": "storage/images/poster/vwT1Mby7poQaGO5CdEbFAqdAjhQawTQ1QivFOrcs.jpg",
+                "width": 340,
+                "height": 460,
+                "altText": "Inception Poster"
+            },
+            "logo": {
+                "url": "storage/images/poster/psjEIh1U5qhTz2oCP6XiCFzcAyjaDMarZR2fdzOX.jpg",
+                "width": 500,
+                "height": 500,
+                "altText": "Inception Poster"
             }
         }
     },
@@ -195,6 +307,20 @@
                 "posterTitle": "Fullmetal Alchemist: Brotherhood",
                 "synopsis": "Two brothers search for the Philosopher's Stone after a failed alchemy ritual."
             }
+        },
+        "images": {
+            "poster": {
+                "url": "storage/images/poster/wMWuryPkgHEXQpo4g84DWv5BUQfMgZdyLRueGAG2.jpg",
+                "width": 340,
+                "height": 460,
+                "altText": "Inception Poster"
+            },
+            "logo": {
+                "url": "storage/images/poster/Q8YGzYoWexnus9fQUSeh3BYAP8E1G8RVTRjqQaS1.jpg",
+                "width": 500,
+                "height": 500,
+                "altText": "Inception Poster"
+            }
         }
     },
     {
@@ -216,6 +342,20 @@
             "en": {
                 "posterTitle": "The Godfather",
                 "synopsis": "The aging patriarch of an organized crime dynasty transfers control to his son."
+            }
+        },
+        "images": {
+            "poster": {
+                "url": "storage/images/poster/hpCuKF7Biu8CixB3I4af2QM6dK3wbidvQigoutth.jpg",
+                "width": 340,
+                "height": 460,
+                "altText": "Inception Poster"
+            },
+            "logo": {
+                "url": "storage/images/poster/TeBybBa39e9bKfBMFonYb4QzuWB7DhOsr35kbw3c.jpg",
+                "width": 500,
+                "height": 500,
+                "altText": "Inception Poster"
             }
         }
     },
@@ -239,6 +379,20 @@
                 "posterTitle": "The Witcher",
                 "synopsis": "A mutated monster hunter struggles to find his place in a world of beasts and humans."
             }
+        },
+        "images": {
+            "poster": {
+                "url": "storage/images/poster/DkJpTa3jjtYK0A4TzCYl6wxSaxXh6cqIam2aWzTI.jpg",
+                "width": 340,
+                "height": 460,
+                "altText": "Inception Poster"
+            },
+            "logo": {
+                "url": "storage/images/poster/tNlt2KXJzl38u5kSDsjsRgDDJ0Y2wowJfZfcy3js.jpg",
+                "width": 500,
+                "height": 500,
+                "altText": "Inception Poster"
+            }
         }
     },
     {
@@ -260,6 +414,20 @@
             "en": {
                 "posterTitle": "Game of Thrones",
                 "synopsis": "Nine noble families fight for control over the lands of Westeros."
+            }
+        },
+        "images": {
+            "poster": {
+                "url": "storage/images/poster/qN8IRn1w378wdvm8E9iuJiWFkJBleDdxIos36DmW.jpg",
+                "width": 340,
+                "height": 460,
+                "altText": "Inception Poster"
+            },
+            "logo": {
+                "url": "storage/images/poster/UHH8NF5OieJx5ZjSl8PkAQk8D3rJVr5T6XwQzz5h.jpg",
+                "width": 500,
+                "height": 500,
+                "altText": "Inception Poster"
             }
         }
     },
@@ -283,6 +451,20 @@
                 "posterTitle": "Naruto",
                 "synopsis": "A young ninja seeks recognition and dreams of becoming Hokage."
             }
+        },
+        "images": {
+            "poster": {
+                "url": "storage/images/poster/psKIqVHexyUVKXba7J264aeTkwUabPXq0Suujhbe.jpg",
+                "width": 340,
+                "height": 460,
+                "altText": "Inception Poster"
+            },
+            "logo": {
+                "url": "storage/images/poster/uuAgg2wf3WhIM4LnybjudbuERw2WBELAqiniyu1s.jpg",
+                "width": 500,
+                "height": 500,
+                "altText": "Inception Poster"
+            }
         }
     },
     {
@@ -305,6 +487,20 @@
                 "posterTitle": "Death Note",
                 "synopsis": "A notebook grants the power to kill anyone whose name is written within."
             }
+        },
+        "images": {
+            "poster": {
+                "url": "storage/images/poster/ZiChiDqYoCSAcnioZ7SR4mpIAxCFCpC84Rmv4foJ.jpg",
+                "width": 340,
+                "height": 460,
+                "altText": "Inception Poster"
+            },
+            "logo": {
+                "url": "storage/images/poster/VDDYOoPnP75jXpvpElMoErbdpBLglyeUWs6VrIdr.jpg",
+                "width": 500,
+                "height": 500,
+                "altText": "Inception Poster"
+            }
         }
     },
     {
@@ -326,6 +522,20 @@
             "en": {
                 "posterTitle": "Interstellar",
                 "synopsis": "Explorers travel through a wormhole in space in an attempt to ensure humanity's survival."
+            }
+        },
+        "images": {
+            "poster": {
+                "url": "storage/images/poster/Tlf680LTvusZqlhJXsH855EhoZFSWSrjAiIKWvGK.jpg",
+                "width": 340,
+                "height": 460,
+                "altText": "Inception Poster"
+            },
+            "logo": {
+                "url": "storage/images/poster/WsVfLtILCgZtHEZU8iWLjZGnbEqJLJPTNoSguJO4.jpg",
+                "width": 500,
+                "height": 500,
+                "altText": "Inception Poster"
             }
         }
     }

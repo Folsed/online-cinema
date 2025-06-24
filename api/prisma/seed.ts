@@ -11,6 +11,7 @@ async function main() {
     await prisma.genresOnMedia.deleteMany();
 
     // Clearing child tables in the correct order
+    await prisma.mediaImages.deleteMany();
     await prisma.genreTranslations.deleteMany();
     await prisma.mediaTranslations.deleteMany();
 
