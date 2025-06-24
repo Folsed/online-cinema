@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { MediaModule } from './modules/media/media.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { LanguagesModule } from './modules/languages/languages.module';
 
 @Module({
     imports: [
@@ -16,6 +17,7 @@ import { join } from 'path';
         PrismaModule,
         AuthModule,
         MediaModule,
+        LanguagesModule,
     ],
     controllers: [],
     providers: [],
