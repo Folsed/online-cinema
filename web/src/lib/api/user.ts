@@ -6,7 +6,7 @@ export async function fetchCurrentUser(): Promise<IUserData | null> {
     const cookieHeader = cookieStore.toString()
 
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/auth/me`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}auth/me`, {
             credentials: 'include',
             headers: { cookie: cookieHeader },
             cache: 'no-store',
