@@ -78,4 +78,10 @@ export class MediaDto {
         return obj.MediaImages.find((img: MediaImageDto) => img.type === MediaImageType.poster);
     })
     poster!: MediaImageDto;
+
+    @Expose()
+    @Transform(({ obj }) => {
+        return obj.MediaImages.find((img: MediaImageDto) => img.type === MediaImageType.backdrop);
+    })
+    backdrop!: MediaImageDto;
 }
