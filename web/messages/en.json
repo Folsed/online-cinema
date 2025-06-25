@@ -28,5 +28,12 @@
     },
     "HeroCarousel": {
         "button": "Start Watching"
+    },
+    "runtime": {
+        "hr": "h",
+        "min": "m"
+    },
+    "rating": {
+        "stars": "You rated {count, plural, =0 {0 stars} one {# star} other {# stars}}"
     }
 }

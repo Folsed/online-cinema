@@ -112,6 +112,10 @@
         @apply cursor-pointer;
     }
 
+    img {
+        @apply select-none;
+    }
+
     ::selection {
         @apply bg-primary text-black;
     }
@@ -123,5 +127,13 @@
     .hero-carousel {
         background-image: linear-gradient(to bottom, #0000 min(40vh, 50%), #000 100%),
         linear-gradient(to right, #000c 0, #0009 30%, #0000 70%);
+    }
+
+    .details_glass-container {
+        background: rgba(0, 0, 0, 0.4);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(1.6px);
+        -webkit-backdrop-filter: blur(1.6px);
+        border: 1px solid rgba(0, 0, 0, 0.13);
     }
 }
