@@ -1,5 +1,5 @@
 import { Expose, Transform } from 'class-transformer';
-import { MediaImageType } from '@prisma/client';
+import { MediaImageType, MediaType } from '@prisma/client';
 
 export class MediaImageDto {
     @Expose()
@@ -26,7 +26,7 @@ export class MediaDto {
     id!: string;
 
     @Expose()
-    type!: string;
+    type!: MediaType;
 
     @Expose()
     originalTitle!: string;
@@ -69,23 +69,13 @@ export class MediaDto {
 
     @Expose()
     @Transform(({ obj }) => {
-        const logo = obj.MediaImages.find((img: any) => img.type === MediaImageType.logo);
-        return logo
-            ? { url: logo.url, width: logo.width, height: logo.height, altText: logo.altText }
-            : null;
+        return obj.MediaImages.find((img: MediaImageDto) => img.type === MediaImageType.logo);
     })
-    logo?: { url: string; width: number; height: number; altText: string };
+    logo!: MediaImageDto;
 
     @Expose()
-    @Transform(({ obj }) =>
-        obj.MediaImages.filter((img: any) => img.type === MediaImageType.poster).map(
-            (img: any) => ({
-                url: img.url,
-                width: img.width,
-                height: img.height,
-                altText: img.altText,
-            }),
-        ),
-    )
-    poster!: { url: string; width: number; height: number; altText: string }[];
+    @Transform(({ obj }) => {
+        return obj.MediaImages.find((img: MediaImageDto) => img.type === MediaImageType.poster);
+    })
+    poster!: MediaImageDto;
 }
