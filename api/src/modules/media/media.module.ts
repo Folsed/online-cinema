@@ -6,15 +6,17 @@ import { LandingService } from './services/landing.service';
 import { LandingRepository } from './repositories/landing.repository';
 import { LanguagesRepository } from '../languages/languages.repository';
 import { LanguageExistsPipe } from '../../common/pipes/language.pipe';
+import { MediaRepository } from './repositories/media.repository';
 
 @Module({
     controllers: [MediaController, LandingController],
     providers: [
         MediaService,
         LandingService,
+        MediaRepository,
         LandingRepository,
-        LanguagesRepository,
         LanguageExistsPipe,
+        LanguagesRepository,
     ],
 })
 export class MediaModule {}

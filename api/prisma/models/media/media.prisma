@@ -14,7 +14,7 @@ model Media {
   id                String              @id @default(uuid())
   type              MediaType
   originalTitle     String              @map("original_title")
-  alias             String
+  alias             String              @unique
   releaseDate       DateTime            @map("release_date")
   runtime           Int
   status            MediaStatus

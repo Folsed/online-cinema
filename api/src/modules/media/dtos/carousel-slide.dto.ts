@@ -1,5 +1,6 @@
 import { Expose, Transform, Type } from 'class-transformer';
 import { MediaImageDto } from './media-image.dto';
+import { MediaType } from '@prisma/client';
 
 export class CarouselSlideDto {
     @Expose()
@@ -19,7 +20,11 @@ export class CarouselSlideDto {
 
     @Expose()
     @Transform(({ obj }) => obj.media.alias)
-    alias: string | null;
+    alias: string;
+
+    @Expose()
+    @Transform(({ obj }) => obj.media.type)
+    type: MediaType;
 
     @Expose()
     @Transform(({ obj }) => obj.media.MediaTranslations[0].synopsis)
