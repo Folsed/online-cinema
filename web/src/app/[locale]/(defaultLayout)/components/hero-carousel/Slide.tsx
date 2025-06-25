@@ -36,7 +36,7 @@ const Slide: React.FC<ISlideProps> = ({ currentIndex, index, slide }) => {
                         <div className='hero-carousel absolute inset-0 block aspect-[inherit] from-transparent to-black max-md:bg-gradient-to-b'></div>
                     </div>
                     <div className='hero_logo col-[4/span_6] row-start-1 grid md:col-[1/span_4] lg:col-[1/span_3]'>
-                        <Link href={`/${slide.type}/${slide.alias}`}>
+                        <Link href={`/details/${slide.alias}`}>
                             <picture>
                                 <Image
                                     src={`${process.env.NEXT_PUBLIC_BACKEND_STORAGE_URL}${slide.logo.url}`}
@@ -58,11 +58,11 @@ const Slide: React.FC<ISlideProps> = ({ currentIndex, index, slide }) => {
                     </div>
                     <div className='hero_actions col-[1/span_12] row-start-3 flex gap-3 sm:col-[3/span_8] md:col-[1/span_3] lg:col-[1/span_2]'>
                         <Button
-                            className='hover:bg-primary-hover h-10 w-fit flex-1 stroke-black font-semibold whitespace-nowrap text-black uppercase duration-200 lg:max-w-fit'
+                            className='hover:bg-primary-hover h-10 w-fit flex-1 stroke-black px-8! font-semibold whitespace-nowrap text-black uppercase duration-200 lg:max-w-fit'
                             asChild
                         >
-                            <Link href={`/${slide.type}/${slide.alias}`}>
-                                <Play style={{ scale: 1.4 }} />
+                            <Link href={`/details/${slide.alias}`}>
+                                <Play style={{ scale: 1.6 }} />
                                 {t('button')}
                             </Link>
                         </Button>

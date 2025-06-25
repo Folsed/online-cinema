@@ -2,6 +2,7 @@
 import { TAppStore, makeStore } from '@/store/store'
 import React, { useRef } from 'react'
 import { Provider } from 'react-redux'
+import { IUserData } from '@/types/user.types'
 
 const StoreProvider = ({
     children,
