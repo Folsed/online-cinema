@@ -5,6 +5,7 @@ import Link from 'next/link'
 import RuntimeDisplay from '@/components/ui/RuntimeDisplay'
 import { Dot, Star } from 'lucide-react'
 import ReviewStars from '@/components/ui/ReviewStars'
+import { Separator } from '@/components/shadcn/separator'
 
 const Details = ({ details }: { details: IMediaDetails }) => {
     const releaseDate = new Date(details.releaseDate).getFullYear()
@@ -22,7 +23,7 @@ const Details = ({ details }: { details: IMediaDetails }) => {
                     />
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <div className='max-w-[330px]'>
+                    <div className='max-w-[300px]'>
                         <Image
                             src={`${process.env.NEXT_PUBLIC_BACKEND_STORAGE_URL}${details.logo.url}`}
                             alt={details.logo.altText}
@@ -50,12 +51,11 @@ const Details = ({ details }: { details: IMediaDetails }) => {
                         <Dot className='text-tertiary-hover' />
                         <span>{releaseDate}</span>
                     </div>
-                    <ReviewStars
-                        size={48}
-                        isUsable
-                        stars={3.56}
-                        infoEnabled
-                    />
+                    <div className='flex items-center gap-2'>
+                        <ReviewStars size={32} isUsable stars={3.56} infoEnabled />
+                        <Separator orientation='vertical' />
+
+                    </div>
                 </div>
             </div>
         </div>

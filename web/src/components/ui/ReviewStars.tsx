@@ -4,6 +4,7 @@ import { StarOutlineIcon } from '@/components/ui/StarOutlineIcon'
 import { StarFullIcon } from '@/components/ui/StarFullIcon'
 import { StarHalfIcon } from '@/components/ui/StarHalfIcon'
 import { useTranslations } from 'next-intl'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/shadcn/tooltip'
 
 interface ReviewStarsProps {
     stars: number
@@ -65,20 +66,28 @@ const ReviewStars: React.FC<ReviewStarsProps> = ({
     )
 
     return (
-        <div className='flex items-center'>
-            <div
-                className={isUsable ? 'flex cursor-pointer' : 'pointer-events-none flex'}
-                onMouseOver={() => setInteracting(true)}
-                onMouseLeave={() => {
-                    setInteracting(false)
-                    setHover(0)
-                }}
-            >
-                {starsArray}
-            </div>
-            {isUsable && infoEnabled && rate > 0 && (
-                <span className='text-muted-foreground ml-2'>{t('stars', { count: rate })}</span>
-            )}
+        <div className='flex flex-col'>
+            <Tooltip>
+                <TooltipTrigger asChild>
+                    <div
+                        className={isUsable ? 'flex cursor-pointer' : 'pointer-events-none flex'}
+                        onMouseOver={() => setInteracting(true)}
+                        onMouseLeave={() => {
+                            setInteracting(false)
+                            setHover(0)
+                        }}
+                    >
+                        {starsArray}
+                    </div>
+                </TooltipTrigger>
+                {isUsable && infoEnabled && rate > 0 && (
+                    <TooltipContent>
+                        <span className='text-muted-foreground ml-2'>
+                            {t('stars', { count: rate })}
+                        </span>
+                    </TooltipContent>
+                )}
+            </Tooltip>
         </div>
     )
 }

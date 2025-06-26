@@ -20,7 +20,7 @@ const Slide: React.FC<ISlideProps> = ({ currentIndex, index, slide }) => {
             <div className='content-padding'>
                 <div className='grid aspect-[1/1.15] w-full grid-cols-[repeat(12,_1fr)] grid-rows-[1fr,_auto] content-end items-end gap-x-[0.625rem] md:aspect-[20/7] md:gap-[1.25rem] lg:gap-[1.875rem] lg:pt-[1.25rem]'>
                     <div className='pointer-events-none absolute top-0 left-0 -z-10 aspect-[2/3] w-full min-w-full md:aspect-[16/9]'>
-                        <picture>
+                        <picture className="relative block w-full h-full">
                             <source
                                 media='(max-width: 768px)'
                                 srcSet={`${process.env.NEXT_PUBLIC_BACKEND_STORAGE_URL}${slide.mobile}`}
@@ -36,16 +36,15 @@ const Slide: React.FC<ISlideProps> = ({ currentIndex, index, slide }) => {
                         <div className='hero-carousel absolute inset-0 block aspect-[inherit] from-transparent to-black max-md:bg-gradient-to-b'></div>
                     </div>
                     <div className='hero_logo col-[4/span_6] row-start-1 grid md:col-[1/span_4] lg:col-[1/span_3]'>
-                        <Link href={`/details/${slide.alias}`}>
-                            <picture>
-                                <Image
-                                    src={`${process.env.NEXT_PUBLIC_BACKEND_STORAGE_URL}${slide.logo.url}`}
-                                    width={slide.logo.width}
-                                    height={slide.logo.height}
-                                    alt={slide.logo.altText}
-                                    className='object-contain'
-                                />
-                            </picture>
+                        <Link href={`/details/${slide.alias}`} className='max-w-[450px] relative'>
+                            <Image
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_STORAGE_URL}${slide.logo.url}`}
+                                width={450}
+                                height={250}
+                                alt={slide.logo.altText}
+                                className='h-auto w-auto object-contain'
+                                priority
+                            />
                         </Link>
                     </div>
                     <div className='hero_meta col-[1/span_12] text-center md:col-[1/span_4] md:text-left'>
