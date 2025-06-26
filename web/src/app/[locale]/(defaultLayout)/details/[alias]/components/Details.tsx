@@ -9,16 +9,16 @@ import { Separator } from '@/components/shadcn/separator'
 import { useTranslations } from 'next-intl'
 import { Button } from '@/components/shadcn/button'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/shadcn/tooltip'
+import Series from '@/app/[locale]/(defaultLayout)/details/[alias]/components/Series'
+import Recommendations from '@/app/[locale]/(defaultLayout)/details/[alias]/components/Recommendations'
 
 const Details = ({ details }: { details: IMediaDetails }) => {
     const releaseDate = new Date(details.releaseDate).getFullYear()
-    const t = useTranslations('rating')
-
-    console.log(details)
+    const t = useTranslations()
 
     return (
         <article className='flex flex-col gap-6'>
-            <header className='flex gap-4'>
+            <header className='flex flex-col gap-4 max-sm:items-center sm:flex-row'>
                 <figure className='max-w-[200px]'>
                     <Image
                         src={`${process.env.NEXT_PUBLIC_BACKEND_STORAGE_URL}${details.poster.url}`}
@@ -32,26 +32,28 @@ const Details = ({ details }: { details: IMediaDetails }) => {
                     </figcaption>
                 </figure>
                 <div className='flex flex-col gap-2'>
-                    <figure className='max-w-[300px]'>
-                        <Image
-                            src={`${process.env.NEXT_PUBLIC_BACKEND_STORAGE_URL}${details.logo.url}`}
-                            alt={details.logo.altText}
-                            width={350}
-                            height={200}
-                            className='h-auto w-auto object-contain'
-                            priority
-                        />
-                        <figcaption className='sr-only'>
-                            {details.posterTitle} — {details.logo.type}
-                        </figcaption>
-                    </figure>
+                    <div className='w-full flex max-sm:justify-center'>
+                        <figure className='max-w-[300px]'>
+                            <Image
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_STORAGE_URL}${details.logo.url}`}
+                                alt={details.logo.altText}
+                                width={350}
+                                height={200}
+                                className='h-auto w-auto object-contain'
+                                priority
+                            />
+                            <figcaption className='sr-only'>
+                                {details.posterTitle} — {details.logo.type}
+                            </figcaption>
+                        </figure>
+                    </div>
                     <h1 className='text-xl font-semibold'>{details.posterTitle}</h1>
                     <ul className='flex gap-2' aria-label='Genres'>
                         {details.genres.map(item => (
                             <li key={item.slug}>
                                 <Link
                                     href={`/browse/${item.slug}`}
-                                    className='bg-secondary hover:bg-tertiary-hover px-2 py-2 text-sm transition-all duration-200'
+                                    className='bg-secondary hover:bg-tertiary-hover px-2 py-1 text-sm transition-all duration-200'
                                 >
                                     {item.name}
                                 </Link>
@@ -75,23 +77,24 @@ const Details = ({ details }: { details: IMediaDetails }) => {
                             </dd>
                         </div>
                     </dl>
-                    <div className='flex items-center gap-2'>
+                    <div className='flex sm:items-center max-sm:flex-col sm:gap-2'>
                         <ReviewStars size={32} isUsable stars={3.56} infoEnabled />
                         <Separator orientation='vertical' />
                         <p>
-                            {t('avg')} <strong>4.56 (506)</strong>
+                            {t('rating.avg')} <strong>4.56 (506)</strong>
                         </p>
                     </div>
                 </div>
             </header>
-            <div role='group' aria-label='Media actions' className='flex gap-2'>
-                <Button className='text-primary border-primary hover:text-primary-hover hover:border-primary-hover border-2 bg-transparent uppercase'>
+            <Separator />
+            <div role='group' aria-label='Media actions' className='flex gap-2 flex-wrap'>
+                <Button className='text-primary border-primary hover:text-primary-hover hover:border-primary-hover border-2 bg-transparent uppercase hover:bg-transparent'>
                     <Play style={{ scale: 1.5 }} />
-                    Почати перегляд
+                    {t('buttons.watch')}
                 </Button>
                 <Button variant='ghost' className='text-muted-foreground uppercase'>
                     <Bookmark style={{ scale: 1.5 }} />
-                    Додати до бажаного
+                    {t('buttons.list')}
                 </Button>
                 <Tooltip>
                     <TooltipTrigger asChild>
@@ -100,7 +103,7 @@ const Details = ({ details }: { details: IMediaDetails }) => {
                         </Button>
                     </TooltipTrigger>
                     <TooltipContent>
-                        <span>Переглянути мій список</span>
+                        <span>{t('buttons.my-list')}</span>
                     </TooltipContent>
                 </Tooltip>
                 <Tooltip>
@@ -110,7 +113,7 @@ const Details = ({ details }: { details: IMediaDetails }) => {
                         </Button>
                     </TooltipTrigger>
                     <TooltipContent>
-                        <span>Поділитися</span>
+                        <span>{t('buttons.share')}</span>
                     </TooltipContent>
                 </Tooltip>
             </div>
@@ -119,6 +122,8 @@ const Details = ({ details }: { details: IMediaDetails }) => {
                     <p key={index}>{paragraph}</p>
                 ))}
             </section>
+            <Series />
+            <Recommendations />
         </article>
     )
 }

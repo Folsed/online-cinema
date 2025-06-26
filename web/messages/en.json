@@ -36,5 +36,11 @@
     "rating": {
         "stars": "You rated {count, plural, =0 {0 stars} one {# star} other {# stars}}",
         "avg": "Average score:"
+    },
+    "buttons": {
+        "watch": "Start watching",
+        "list": "Add to wishlist",
+        "my-list": "View my list",
+        "share": "Share"
     }
 }

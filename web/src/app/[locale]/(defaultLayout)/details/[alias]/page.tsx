@@ -13,7 +13,7 @@ const MediaDetailsPage = async ({
     return (
         <>
             <Backdrop backdrop={details.backdrop} />
-            <section className='details_glass-container container mx-auto mt-[55vh] p-8 pb-96'>
+            <section className='details_glass-container container mx-auto mt-[48vh] p-8 pb-96'>
                 <Details details={details} />
             </section>
         </>

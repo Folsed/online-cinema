@@ -70,7 +70,7 @@ const ReviewStars: React.FC<ReviewStarsProps> = ({
             <Tooltip>
                 <TooltipTrigger asChild>
                     <div
-                        className={isUsable ? 'flex cursor-pointer' : 'pointer-events-none flex'}
+                        className={`flex h-fit w-fit ${isUsable ? 'cursor-pointer' : 'pointer-events-none'}`}
                         onMouseOver={() => setInteracting(true)}
                         onMouseLeave={() => {
                             setInteracting(false)
@@ -80,11 +80,10 @@ const ReviewStars: React.FC<ReviewStarsProps> = ({
                         {starsArray}
                     </div>
                 </TooltipTrigger>
+
                 {isUsable && infoEnabled && rate > 0 && (
                     <TooltipContent>
-                        <span className='ml-2'>
-                            {t('stars', { count: rate })}
-                        </span>
+                        <span className='ml-2'>{t('stars', { count: rate })}</span>
                     </TooltipContent>
                 )}
             </Tooltip>
