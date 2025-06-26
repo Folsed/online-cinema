@@ -2,6 +2,7 @@ import { Controller, Get, Param, Query, UsePipes, ValidationPipe } from '@nestjs
 import { MediaService } from '../services/media.service';
 import { LanguageExistsPipe } from '../../../common/pipes/language.pipe';
 import { BrowseMediaDto } from '../dtos/browse-media.dto';
+import { MediaDto, MediaPosterDto } from '../dtos/media.dto';
 
 @Controller('media')
 export class MediaController {
@@ -9,7 +10,7 @@ export class MediaController {
 
     @Get('browse')
     @UsePipes(new ValidationPipe({ transform: true, whitelist: true }))
-    async getBrowsedMedia(@Query() dto: BrowseMediaDto) {
+    async getBrowsedMedia(@Query() dto: BrowseMediaDto): Promise<MediaPosterDto> {
         return this.mediaService.findBrowsedMedia(dto);
     }
 
@@ -17,7 +18,7 @@ export class MediaController {
     async getMediaByAlias(
         @Param('alias') alias: string,
         @Query('lang', LanguageExistsPipe) lang: string = 'uk',
-    ) {
+    ): Promise<MediaDto> {
         return this.mediaService.findMediaByAlias(alias, lang);
     }
 }
