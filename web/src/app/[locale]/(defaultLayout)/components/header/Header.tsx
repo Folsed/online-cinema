@@ -7,6 +7,7 @@ import { ChevronDown, Menu, Search, UserRound } from 'lucide-react'
 import { useLogoutMutation } from '@/store/features/auth/authApiSlice'
 import { useAppSelector } from '@/store/hooks'
 import { useTranslations } from 'next-intl'
+import Browse from '@/app/[locale]/(defaultLayout)/components/browse/Browse'
 
 const Header = () => {
     const t = useTranslations('Header')
@@ -33,10 +34,7 @@ const Header = () => {
                     </Link>
 
                     <div className='hidden md:flex'>
-                        <button className='hover:bg-tertiary-active hover:text-secondary-foreground flex h-full cursor-pointer items-center px-3 duration-200'>
-                            <span>{t('catalog')}</span>
-                            <ChevronDown size={20} />
-                        </button>
+                        <Browse/>
 
                         <Link
                             href={''}

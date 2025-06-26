@@ -105,7 +105,7 @@
     }
 
     body {
-        @apply bg-background text-foreground;
+        @apply bg-background text-foreground relative overflow-auto;
     }
 
     button {
@@ -135,5 +135,15 @@
         backdrop-filter: blur(1.6px);
         -webkit-backdrop-filter: blur(1.6px);
         border: 1px solid rgba(0, 0, 0, 0.13);
+    }
+}
+
+@layer utilities {
+    .underline-hover {
+        @apply relative inline-block after:absolute after:left-0 after:-bottom-1
+        after:h-[2px] after:w-full after:bg-current
+        after:origin-left after:scale-x-0
+        after:transition-transform after:duration-300
+        hover:after:scale-x-100;
     }
 }
