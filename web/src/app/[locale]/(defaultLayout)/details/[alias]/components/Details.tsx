@@ -3,17 +3,23 @@ import { IMediaDetails } from '@/types/media.types'
 import Image from 'next/image'
 import Link from 'next/link'
 import RuntimeDisplay from '@/components/ui/RuntimeDisplay'
-import { Dot, Star } from 'lucide-react'
+import { Bookmark, Dot, List, Play, Share2, Star } from 'lucide-react'
 import ReviewStars from '@/components/ui/ReviewStars'
 import { Separator } from '@/components/shadcn/separator'
+import { useTranslations } from 'next-intl'
+import { Button } from '@/components/shadcn/button'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/shadcn/tooltip'
 
 const Details = ({ details }: { details: IMediaDetails }) => {
     const releaseDate = new Date(details.releaseDate).getFullYear()
+    const t = useTranslations('rating')
+
+    console.log(details)
 
     return (
-        <div>
-            <div className='flex gap-4'>
-                <div className='max-w-[200px]'>
+        <article className='flex flex-col gap-6'>
+            <header className='flex gap-4'>
+                <figure className='max-w-[200px]'>
                     <Image
                         src={`${process.env.NEXT_PUBLIC_BACKEND_STORAGE_URL}${details.poster.url}`}
                         alt={details.poster.altText}
@@ -21,9 +27,12 @@ const Details = ({ details }: { details: IMediaDetails }) => {
                         height={details.poster.height}
                         priority
                     />
-                </div>
+                    <figcaption className='sr-only'>
+                        {details.posterTitle} — {details.poster.type}
+                    </figcaption>
+                </figure>
                 <div className='flex flex-col gap-2'>
-                    <div className='max-w-[300px]'>
+                    <figure className='max-w-[300px]'>
                         <Image
                             src={`${process.env.NEXT_PUBLIC_BACKEND_STORAGE_URL}${details.logo.url}`}
                             alt={details.logo.altText}
@@ -32,46 +41,86 @@ const Details = ({ details }: { details: IMediaDetails }) => {
                             className='h-auto w-auto object-contain'
                             priority
                         />
-                    </div>
+                        <figcaption className='sr-only'>
+                            {details.posterTitle} — {details.logo.type}
+                        </figcaption>
+                    </figure>
                     <h1 className='text-xl font-semibold'>{details.posterTitle}</h1>
-                    <ul className='flex gap-2'>
+                    <ul className='flex gap-2' aria-label='Genres'>
                         {details.genres.map(item => (
-                            <li
-                                className='bg-secondary hover:bg-tertiary-hover transition-all duration-200'
-                                key={item.slug}
-                            >
-                                <Link href={`/browse/${item.slug}`} className='px-2 py-2 text-sm'>
+                            <li key={item.slug}>
+                                <Link
+                                    href={`/browse/${item.slug}`}
+                                    className='bg-secondary hover:bg-tertiary-hover px-2 py-2 text-sm transition-all duration-200'
+                                >
                                     {item.name}
                                 </Link>
                             </li>
                         ))}
                     </ul>
-                    <div className='flex items-center gap-1'>
-                        <RuntimeDisplay runtime={details.runtime} />
-                        <Dot className='text-tertiary-hover' />
-                        <span>{releaseDate}</span>
-                    </div>
+                    <dl className='flex items-center gap-1'>
+                        <div className='flex items-center'>
+                            <dt className='sr-only'>Тривалість | Duration</dt>
+                            <dd>
+                                <RuntimeDisplay runtime={details.runtime} />
+                            </dd>
+                        </div>
+                        <dd>
+                            <Dot className='text-tertiary-hover' />
+                        </dd>
+                        <div className='flex items-center'>
+                            <dt className='sr-only'>Дата виходу | Release Date</dt>
+                            <dd>
+                                <time>{releaseDate}</time>
+                            </dd>
+                        </div>
+                    </dl>
                     <div className='flex items-center gap-2'>
                         <ReviewStars size={32} isUsable stars={3.56} infoEnabled />
                         <Separator orientation='vertical' />
-
+                        <p>
+                            {t('avg')} <strong>4.56 (506)</strong>
+                        </p>
                     </div>
                 </div>
+            </header>
+            <div role='group' aria-label='Media actions' className='flex gap-2'>
+                <Button className='text-primary border-primary hover:text-primary-hover hover:border-primary-hover border-2 bg-transparent uppercase'>
+                    <Play style={{ scale: 1.5 }} />
+                    Почати перегляд
+                </Button>
+                <Button variant='ghost' className='text-muted-foreground uppercase'>
+                    <Bookmark style={{ scale: 1.5 }} />
+                    Додати до бажаного
+                </Button>
+                <Tooltip>
+                    <TooltipTrigger asChild>
+                        <Button variant='ghost' className='text-muted-foreground uppercase'>
+                            <List style={{ scale: 1.5 }} />
+                        </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                        <span>Переглянути мій список</span>
+                    </TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                    <TooltipTrigger asChild>
+                        <Button variant='ghost' className='text-muted-foreground uppercase'>
+                            <Share2 style={{ scale: 1.5 }} />
+                        </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                        <span>Поділитися</span>
+                    </TooltipContent>
+                </Tooltip>
             </div>
-        </div>
+            <section aria-labelledby='media-description'>
+                {details.synopsis.split('\n').map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                ))}
+            </section>
+        </article>
     )
 }
 
 export default Details
-
-
-// <div className={styles.synopsis}>
-//     <p className={styles.synBlockText}>
-//     {data.synopsis.split('\n').map((paragraph, index) => (
-//             <React.Fragment key={index}>
-//                 {paragraph}
-//                 <br />
-//             </React.Fragment>
-//         ))}
-// </p>
-// </div>

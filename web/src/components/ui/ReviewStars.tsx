@@ -82,7 +82,7 @@ const ReviewStars: React.FC<ReviewStarsProps> = ({
                 </TooltipTrigger>
                 {isUsable && infoEnabled && rate > 0 && (
                     <TooltipContent>
-                        <span className='text-muted-foreground ml-2'>
+                        <span className='ml-2'>
                             {t('stars', { count: rate })}
                         </span>
                     </TooltipContent>
