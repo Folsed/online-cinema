@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../../prisma/prisma.service';
 import { LandingRepository } from '../repositories/landing.repository';
 import { plainToInstance } from 'class-transformer';
 import { CarouselSlideDto } from '../dtos/carousel-slide.dto';

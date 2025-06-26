@@ -1,11 +1,17 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { MediaService } from '../services/media.service';
-import { Media } from '@prisma/client';
 import { LanguageExistsPipe } from '../../../common/pipes/language.pipe';
+import { BrowseMediaDto } from '../dtos/browse-media.dto';
 
 @Controller('media')
 export class MediaController {
     constructor(private readonly mediaService: MediaService) {}
+
+    @Get('browse')
+    @UsePipes(new ValidationPipe({ transform: true, whitelist: true }))
+    async getBrowsedMedia(@Query() dto: BrowseMediaDto) {
+        return this.mediaService.findBrowsedMedia(dto);
+    }
 
     @Get(':alias')
     async getMediaByAlias(

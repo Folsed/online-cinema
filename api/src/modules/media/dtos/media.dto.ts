@@ -1,5 +1,6 @@
 import { Expose, Transform } from 'class-transformer';
 import { MediaImageType, MediaType } from '@prisma/client';
+import { PickType } from '@nestjs/mapped-types';
 
 export class MediaImageDto {
     @Expose()
@@ -85,3 +86,14 @@ export class MediaDto {
     })
     backdrop!: MediaImageDto;
 }
+
+export class MediaPosterDto extends PickType(MediaDto, [
+    'type',
+    'alias',
+    'status',
+    'metadata',
+    'posterTitle',
+    'synopsis',
+    'genres',
+    'poster',
+] as const) {}
