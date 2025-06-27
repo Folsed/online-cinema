@@ -17,7 +17,7 @@ const Details = ({ details }: { details: IMediaDetails }) => {
     const t = useTranslations()
 
     return (
-        <article className='flex flex-col gap-6'>
+        <article className='flex w-full flex-col gap-6'>
             <header className='flex flex-col gap-4 max-sm:items-center sm:flex-row'>
                 <figure className='max-w-[200px]'>
                     <Image

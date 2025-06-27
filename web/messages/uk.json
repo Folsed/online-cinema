@@ -2,7 +2,14 @@
     "Header": {
         "catalog": "Каталог",
         "news": "Новини",
-        "manga": "Манга"
+        "manga": "Манга",
+        "BrowseLinks": {
+            "anime": "Аніме",
+            "series": "Серіали",
+            "movies": "Фільми",
+            "latest": "Найновіші",
+            "most-popular": "Найпопулярніші"
+        }
     },
     "AuthContainer": {
         "log-in": "Увійти",

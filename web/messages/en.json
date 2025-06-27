@@ -2,7 +2,14 @@
     "Header": {
         "catalog": "Browse",
         "news": "News",
-        "manga": "Manga"
+        "manga": "Manga",
+        "BrowseLinks": {
+            "anime": "Anime",
+            "series": "Series",
+            "movies": "Movies",
+            "latest": "Latest",
+            "most-popular": "Most Popular"
+        }
     },
     "AuthContainer": {
         "log-in": "Log in",

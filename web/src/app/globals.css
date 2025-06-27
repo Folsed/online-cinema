@@ -101,12 +101,13 @@
 
 @layer base {
     * {
-        @apply border-border outline-ring/50;
+        @apply border-border;
     }
 
     body {
-        @apply bg-background text-foreground ;
+        @apply bg-background text-foreground;
     }
+
 
     button {
         @apply cursor-pointer;
@@ -125,11 +126,13 @@
     }
 
 
-
-
 }
 
 @layer utilities {
+    body[data-scroll-locked] {
+        margin-right: 0 !important;
+    }
+
     .underline-hover {
         @apply relative inline-block after:absolute after:left-0 after:-bottom-1
         after:h-[2px] after:w-full after:bg-current
