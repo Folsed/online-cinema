@@ -3,7 +3,9 @@ export function parseMaxAgeToMsUtil(value: string): number {
     const match = value.match(regexp);
 
     if (!match) {
-        throw new Error(`Invalid expire format: "${value}". Expected format like "15m", "7d", etc.`);
+        throw new Error(
+            `Invalid expire format: "${value}". Expected format like "15m", "7d", etc.`,
+        );
     }
 
     const amount = parseInt(match[1], 10);
@@ -13,7 +15,7 @@ export function parseMaxAgeToMsUtil(value: string): number {
         s: 1000,
         m: 60 * 1000,
         h: 60 * 60 * 1000,
-        d: 24 * 60 * 60 * 1000
+        d: 24 * 60 * 60 * 1000,
     };
 
     const factor = multipliers[unit];

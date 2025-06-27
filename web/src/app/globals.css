@@ -54,7 +54,6 @@
             opacity: 1;
             transform: translateX(0);
         }
-
     }
 }
 
@@ -108,7 +107,6 @@
         @apply bg-background text-foreground;
     }
 
-
     button {
         @apply cursor-pointer;
     }
@@ -124,8 +122,6 @@
     .content-padding {
         @apply px-[1rem] sm:px-[2rem] lg:px-[3rem] xl:px-[4rem] 2xl:px-[5rem];
     }
-
-
 }
 
 @layer utilities {
@@ -134,16 +130,13 @@
     }
 
     .underline-hover {
-        @apply relative inline-block after:absolute after:left-0 after:-bottom-1
-        after:h-[2px] after:w-full after:bg-current
-        after:origin-left after:scale-x-0
-        after:transition-transform after:duration-300
-        hover:after:scale-x-100;
+        @apply relative inline-block after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:scale-x-100;
     }
 
     .hero-carousel {
-        background-image: linear-gradient(to bottom, #0000 min(40vh, 50%), #000 100%),
-        linear-gradient(to right, #000c 0, #0009 30%, #0000 70%);
+        background-image:
+            linear-gradient(to bottom, #0000 min(40vh, 50%), #000 100%),
+            linear-gradient(to right, #000c 0, #0009 30%, #0000 70%);
     }
 
     .details_glass-container {
@@ -162,5 +155,4 @@
     .no-scrollbar::-webkit-scrollbar {
         display: none;
     }
-
 }

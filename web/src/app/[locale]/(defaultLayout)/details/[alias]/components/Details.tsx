@@ -32,7 +32,7 @@ const Details = ({ details }: { details: IMediaDetails }) => {
                     </figcaption>
                 </figure>
                 <div className='flex flex-col gap-2'>
-                    <div className='w-full flex max-sm:justify-center'>
+                    <div className='flex w-full max-sm:justify-center'>
                         <figure className='max-w-[300px]'>
                             <Image
                                 src={`${process.env.NEXT_PUBLIC_BACKEND_STORAGE_URL}${details.logo.url}`}
@@ -77,7 +77,7 @@ const Details = ({ details }: { details: IMediaDetails }) => {
                             </dd>
                         </div>
                     </dl>
-                    <div className='flex sm:items-center max-sm:flex-col sm:gap-2'>
+                    <div className='flex max-sm:flex-col sm:items-center sm:gap-2'>
                         <ReviewStars size={32} isUsable stars={3.56} infoEnabled />
                         <Separator orientation='vertical' />
                         <p>
@@ -87,7 +87,7 @@ const Details = ({ details }: { details: IMediaDetails }) => {
                 </div>
             </header>
             <Separator />
-            <div role='group' aria-label='Media actions' className='flex gap-2 flex-wrap'>
+            <div role='group' aria-label='Media actions' className='flex flex-wrap gap-2'>
                 <Button className='text-primary border-primary hover:text-primary-hover hover:border-primary-hover border-2 bg-transparent uppercase hover:bg-transparent'>
                     <Play style={{ scale: 1.5 }} />
                     {t('buttons.watch')}

@@ -4,4 +4,4 @@ export enum EAllowedMediaSort {
     Rating = 'rating',
 }
 
-export type TSortBy = typeof EAllowedMediaSort[keyof typeof EAllowedMediaSort];
+export type TSortBy = (typeof EAllowedMediaSort)[keyof typeof EAllowedMediaSort];

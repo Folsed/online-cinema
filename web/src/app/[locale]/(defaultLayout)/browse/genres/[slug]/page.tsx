@@ -9,7 +9,7 @@ const GenrePage = async ({ params }: { params: Promise<{ locale: string; slug: s
         categories: slug,
     })
 
-    return <BrowseGrid media={media} lang={locale} />
+    return <BrowseGrid media={media} lang={locale} slug={slug} />
 }
 
 export default GenrePage
