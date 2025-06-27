@@ -1,15 +1,10 @@
-import React from 'react'
-import { Dialog, DialogOverlay, DialogPortal } from '@/components/shadcn/dialog'
-import Trigger from '@/app/[locale]/(defaultLayout)/components/browse/Trigger'
 import Content from '@/app/[locale]/(defaultLayout)/components/browse/Content'
+import { fetchGenres } from '@/lib/api/media'
 
-const Browse = () => {
-    return (
-        <Dialog>
-            <Trigger />
-            <Content />
-        </Dialog>
-    )
+const Browse = async ({ locale }: { locale: string }) => {
+    const genres = await fetchGenres(locale)
+
+    return <Content genres={genres} />
 }
 
 export default Browse

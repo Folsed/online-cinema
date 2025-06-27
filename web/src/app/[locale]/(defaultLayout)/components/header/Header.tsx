@@ -1,22 +1,13 @@
-'use client'
 import React from 'react'
 import Link from 'next/link'
 import LogoInscription from '@/components/svgs/LogoInscription'
 import Logo from '@/components/svgs/Logo'
-import { ChevronDown, Menu, Search, UserRound } from 'lucide-react'
-import { useLogoutMutation } from '@/store/features/auth/authApiSlice'
-import { useAppSelector } from '@/store/hooks'
+import { Menu, Search, UserRound } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Browse from '@/app/[locale]/(defaultLayout)/components/browse/Browse'
 
-const Header = () => {
+const Header = ({ locale }: { locale: string }) => {
     const t = useTranslations('Header')
-    const [logout] = useLogoutMutation()
-    const user = useAppSelector(state => state.auth.user?.user)
-
-    const handleLogout = async () => {
-        await logout()
-    }
 
     return (
         <header className='bg-tertiary fixed z-50 flex h-[60px] w-full justify-center'>
@@ -34,7 +25,7 @@ const Header = () => {
                     </Link>
 
                     <div className='hidden md:flex'>
-                        <Browse/>
+                        <Browse locale={locale} />
 
                         <Link
                             href={''}
@@ -58,22 +49,14 @@ const Header = () => {
                     >
                         <Search size={22} />
                     </button>
-                    {user ? (
-                        <button
-                            onClick={handleLogout}
-                            className='hover:hover:bg-tertiary-active hover:text-secondary-foreground flex h-full cursor-pointer items-center px-4 capitalize duration-200'
-                        >
-                            {user && user.name}
-                        </button>
-                    ) : (
-                        <Link
-                            className='hover:hover:bg-tertiary-active hover:text-secondary-foreground flex h-full cursor-pointer items-center px-4 duration-200'
-                            href={'/login'}
-                            title='Вхід в акаунт'
-                        >
-                            <UserRound size={24} />
-                        </Link>
-                    )}
+
+                    <Link
+                        className='hover:hover:bg-tertiary-active hover:text-secondary-foreground flex h-full cursor-pointer items-center px-4 duration-200'
+                        href={'/login'}
+                        title='Вхід в акаунт'
+                    >
+                        <UserRound size={24} />
+                    </Link>
                 </div>
             </div>
         </header>

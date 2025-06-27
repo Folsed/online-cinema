@@ -47,3 +47,7 @@ export interface IMediaDetails {
     poster: IMediaImage
     backdrop: IMediaImage
 }
+
+export interface IGenres extends IMediaGenre {
+    imageUrl: string
+}

@@ -105,7 +105,7 @@
     }
 
     body {
-        @apply bg-background text-foreground relative overflow-auto;
+        @apply bg-background text-foreground ;
     }
 
     button {
@@ -124,18 +124,9 @@
         @apply px-[1rem] sm:px-[2rem] lg:px-[3rem] xl:px-[4rem] 2xl:px-[5rem];
     }
 
-    .hero-carousel {
-        background-image: linear-gradient(to bottom, #0000 min(40vh, 50%), #000 100%),
-        linear-gradient(to right, #000c 0, #0009 30%, #0000 70%);
-    }
 
-    .details_glass-container {
-        background: rgba(0, 0, 0, 0.4);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(1.6px);
-        -webkit-backdrop-filter: blur(1.6px);
-        border: 1px solid rgba(0, 0, 0, 0.13);
-    }
+
+
 }
 
 @layer utilities {
@@ -145,5 +136,27 @@
         after:origin-left after:scale-x-0
         after:transition-transform after:duration-300
         hover:after:scale-x-100;
+    }
+
+    .hero-carousel {
+        background-image: linear-gradient(to bottom, #0000 min(40vh, 50%), #000 100%),
+        linear-gradient(to right, #000c 0, #0009 30%, #0000 70%);
+    }
+
+    .details_glass-container {
+        background: rgba(0, 0, 0, 0.8);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(1.6px);
+        -webkit-backdrop-filter: blur(1.6px);
+        border: 1px solid rgba(0, 0, 0, 0.13);
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
     }
 }
