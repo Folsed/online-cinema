@@ -57,7 +57,7 @@ const Dropdown = ({ genres }: { genres: IGenres[] }) => {
                         {genres.map(item => (
                             <li className='' key={item.slug}>
                                 <Link
-                                    href={`/browse/${item.slug}`}
+                                    href={`/browse/genres/${item.slug}`}
                                     onClick={handleDismiss}
                                     className='hover:bg-tertiary-hover flex h-full w-full items-center p-2 font-light'
                                 >

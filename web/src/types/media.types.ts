@@ -30,6 +30,12 @@ export interface IMediaGenre {
     name: string
 }
 
+export enum EAllowedMediaSort {
+    Popularity = 'popularity',
+    NewlyAdded = 'newly_added',
+    Rating = 'rating',
+}
+
 export interface IMediaDetails {
     id: string
     type: EMediaType
@@ -51,3 +57,18 @@ export interface IMediaDetails {
 export interface IGenres extends IMediaGenre {
     imageUrl: string
 }
+
+export interface IBrowseMediaParams {
+    n?: number
+    offset?: number
+    sort_by?: EAllowedMediaSort
+    categories?: string
+    ratings?: boolean
+    lang?: string
+}
+
+export interface IMediaPoster
+    extends Pick<
+        IMediaDetails,
+        'type' | 'alias' | 'status' | 'metadata' | 'posterTitle' | 'synopsis' | 'genres' | 'poster'
+    > {}

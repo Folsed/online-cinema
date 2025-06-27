@@ -52,7 +52,7 @@ const Details = ({ details }: { details: IMediaDetails }) => {
                         {details.genres.map(item => (
                             <li key={item.slug}>
                                 <Link
-                                    href={`/browse/${item.slug}`}
+                                    href={`/browse/genres/${item.slug}`}
                                     className='bg-secondary hover:bg-tertiary-hover px-2 py-1 text-sm transition-all duration-200'
                                 >
                                     {item.name}
