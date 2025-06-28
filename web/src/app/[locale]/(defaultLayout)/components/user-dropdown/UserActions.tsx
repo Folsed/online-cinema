@@ -24,7 +24,7 @@ const UserActions = ({
         handleDismiss()
     }
     return (
-        <div className='flex flex-col gap-4'>
+        <div className='flex flex-col gap-3'>
             <Link
                 href='/profile'
                 className='hover:bg-tertiary-hover flex items-center gap-24 px-4 py-2'
@@ -55,20 +55,22 @@ const UserActions = ({
                 Налаштування
             </Link>
             <Separator />
-            <Link
-                href='/prfile'
-                className='hover:bg-tertiary-hover flex items-center gap-2 px-4 py-4'
-            >
-                <Bookmark />
-                Дивитися пізніше (5)
-            </Link>
-            <Link
-                href='/prfile'
-                className='hover:bg-tertiary-hover flex items-center gap-2 px-4 py-4'
-            >
-                <ListVideo />
-                Мої списки
-            </Link>
+            <div className=''>
+                <Link
+                    href='/prfile'
+                    className='hover:bg-tertiary-hover flex items-center gap-2 px-4 py-4'
+                >
+                    <Bookmark />
+                    Дивитися пізніше (5)
+                </Link>
+                <Link
+                    href='/prfile'
+                    className='hover:bg-tertiary-hover flex items-center gap-2 px-4 py-4'
+                >
+                    <ListVideo />
+                    Мої списки
+                </Link>
+            </div>
             <Separator />
             <button
                 className='hover:bg-tertiary-hover flex items-center gap-2 px-4 py-4'
