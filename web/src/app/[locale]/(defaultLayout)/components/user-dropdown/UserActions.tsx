@@ -1,10 +1,11 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Bookmark, ListVideo, LogOut, Settings, UserRoundPen } from 'lucide-react'
 import { Separator } from '@/components/shadcn/separator'
 import { IUserData } from '@/types/user.types'
 import { useLogoutMutation } from '@/store/features/auth/authApiSlice'
+import { useRouter } from 'next/navigation'
 
 const UserActions = ({
     user,
@@ -14,19 +15,27 @@ const UserActions = ({
     setActive: (value: boolean) => void
 }) => {
     const [logout] = useLogoutMutation()
+    const router = useRouter()
 
     const handleDismiss = useCallback(() => {
         setActive(false)
     }, [])
 
     const handleLogout = async () => {
-        await logout()
         handleDismiss()
+        try {
+            await logout().unwrap()
+            router.push('/login')
+        } catch (error) {
+            console.error('Logout failed', error)
+        }
     }
+
     return (
         <div className='flex flex-col gap-3'>
             <Link
-                href='/profile'
+                href='/account/profile'
+                onClick={handleDismiss}
                 className='hover:bg-tertiary-hover flex items-center gap-24 px-4 py-2'
             >
                 <div className='flex items-center gap-4'>
@@ -48,7 +57,8 @@ const UserActions = ({
             </Link>
             <Separator />
             <Link
-                href='/prfile'
+                href='/account/profile'
+                onClick={handleDismiss}
                 className='hover:bg-tertiary-hover flex items-center gap-2 px-4 py-4'
             >
                 <Settings />
@@ -57,14 +67,16 @@ const UserActions = ({
             <Separator />
             <div className=''>
                 <Link
-                    href='/prfile'
+                    href='/account/profile'
+                    onClick={handleDismiss}
                     className='hover:bg-tertiary-hover flex items-center gap-2 px-4 py-4'
                 >
                     <Bookmark />
                     Дивитися пізніше (5)
                 </Link>
                 <Link
-                    href='/prfile'
+                    href='/account/profile'
+                    onClick={handleDismiss}
                     className='hover:bg-tertiary-hover flex items-center gap-2 px-4 py-4'
                 >
                     <ListVideo />

@@ -6,6 +6,7 @@ import { MediaModule } from './modules/media/media.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { LanguagesModule } from './modules/languages/languages.module';
+import { UserModule } from './modules/user/user.module';
 
 @Module({
     imports: [
@@ -18,6 +19,7 @@ import { LanguagesModule } from './modules/languages/languages.module';
         AuthModule,
         MediaModule,
         LanguagesModule,
+        UserModule,
     ],
     controllers: [],
     providers: [],
