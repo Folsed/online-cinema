@@ -1,16 +1,9 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { getServerSession } from '@/lib/api/session'
 
 export async function authMiddleware(req: NextRequest) {
-    const sessionData = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}auth/session`, {
-        method: 'GET',
-        headers: {
-            cookie: req.headers.get('cookie') || '',
-        },
-    })
-    const { session } = await sessionData.json()
-
-    console.log(session)
+    const session = await getServerSession()
 
     if (!session) {
         const res = NextResponse.redirect(new URL('/login', req.url))
