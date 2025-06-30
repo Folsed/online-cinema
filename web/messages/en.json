@@ -1,8 +1,15 @@
 {
     "Header": {
-        "catalog": "Catalog",
+        "catalog": "Browse",
         "news": "News",
-        "manga": "Manga"
+        "manga": "Manga",
+        "BrowseLinks": {
+            "anime": "Anime",
+            "series": "Series",
+            "movies": "Movies",
+            "latest": "Latest",
+            "most-popular": "Most Popular"
+        }
     },
     "AuthContainer": {
         "log-in": "Log in",
@@ -28,5 +35,19 @@
     },
     "HeroCarousel": {
         "button": "Start Watching"
+    },
+    "runtime": {
+        "hr": "h",
+        "min": "m"
+    },
+    "rating": {
+        "stars": "You rated {count, plural, =0 {0 stars} one {# star} other {# stars}}",
+        "avg": "Average score:"
+    },
+    "buttons": {
+        "watch": "Start watching",
+        "list": "Add to wishlist",
+        "my-list": "View my list",
+        "share": "Share"
     }
 }

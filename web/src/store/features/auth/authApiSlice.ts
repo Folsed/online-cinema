@@ -7,6 +7,7 @@ import {
     IResetPasswordRequest,
     IResetPasswordRequestResponse,
 } from '@/types/auth.types'
+import { IUserData } from '@/types/user.types'
 
 export const authApiSlice = createApi({
     reducerPath: 'authApiSlice',

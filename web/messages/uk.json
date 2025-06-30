@@ -2,7 +2,14 @@
     "Header": {
         "catalog": "Каталог",
         "news": "Новини",
-        "manga": "Манга"
+        "manga": "Манга",
+        "BrowseLinks": {
+            "anime": "Аніме",
+            "series": "Серіали",
+            "movies": "Фільми",
+            "latest": "Найновіші",
+            "most-popular": "Найпопулярніші"
+        }
     },
     "AuthContainer": {
         "log-in": "Увійти",
@@ -28,5 +35,19 @@
     },
     "HeroCarousel": {
         "button": "Почати перегляд"
+    },
+    "runtime": {
+        "hr": "год",
+        "min": "хв"
+    },
+    "rating": {
+        "stars": "Ви поставили {count, plural, =0 {0 зірок} one {# зірку} few {# зірки} many {# зірок} other {# зірки}}",
+        "avg": "Середня оцінка:"
+    },
+    "buttons": {
+        "watch": "Почати перегляд",
+        "list": "Додати до бажаного",
+        "my-list": "Переглянути мій список",
+        "share": "Поділитися"
     }
 }
