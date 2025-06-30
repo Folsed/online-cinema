@@ -26,6 +26,7 @@ model Media {
   GenresOnMedia     GenresOnMedia[]
   MediaImages       MediaImages[]
   HomepageCarousel  HomepageCarousel?
+  Watchlist         Watchlist[]
 
   @@map("media")
 }

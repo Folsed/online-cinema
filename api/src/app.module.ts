@@ -7,6 +7,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { LanguagesModule } from './modules/languages/languages.module';
 import { UserModule } from './modules/user/user.module';
+import { WatchlistModule } from './modules/watchlist/watchlist.module';
 
 @Module({
     imports: [
@@ -20,6 +21,7 @@ import { UserModule } from './modules/user/user.module';
         MediaModule,
         LanguagesModule,
         UserModule,
+        WatchlistModule,
     ],
     controllers: [],
     providers: [],
