@@ -12,6 +12,7 @@ export class LandingRepository {
             include: {
                 media: {
                     select: {
+                        type: true,
                         alias: true,
                         GenresOnMedia: {
                             select: {

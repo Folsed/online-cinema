@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { authApiSlice } from '@/store/features/auth/authApiSlice'
+import { IUserData } from '@/types/user.types'
 
 interface AuthState {
     user: IUserData | null

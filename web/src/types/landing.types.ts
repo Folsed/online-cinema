@@ -1,4 +1,4 @@
-import { EMediaType, IMediaImage } from '@/types/media.types'
+import { EMediaType, IMediaGenre, IMediaImage } from '@/types/media.types'
 
 export interface IHeroSlide {
     id: string
@@ -9,9 +9,6 @@ export interface IHeroSlide {
     mobile: string
     alias: string
     synopsis: string
-    genres: {
-        name: string
-        slug: string
-    }[]
+    genres: IMediaGenre[]
     logo: IMediaImage
 }

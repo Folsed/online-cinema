@@ -14,5 +14,5 @@ export class RegisterDto {
 
     @IsBoolean()
     @IsNotEmpty()
-    acceptTerms: boolean
+    acceptTerms: boolean;
 }
