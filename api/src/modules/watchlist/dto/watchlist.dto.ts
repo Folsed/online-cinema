@@ -3,6 +3,7 @@ import { MediaDto } from '../../media/dtos/media.dto';
 import { Expose } from 'class-transformer';
 
 export class WatchlistDto extends PickType(MediaDto, [
+    'id',
     'type',
     'alias',
     'status',

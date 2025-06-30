@@ -5,7 +5,6 @@ import {
     NotFoundException,
 } from '@nestjs/common';
 import { CreateWatchlistDto } from './dto/create-watchlist.dto';
-import { UpdateWatchlistDto } from './dto/update-watchlist.dto';
 import { PrismaService } from '../prisma/prisma.service';
 import { MediaRepository } from '../media/repositories/media.repository';
 import { plainToInstance } from 'class-transformer';
@@ -74,15 +73,14 @@ export class WatchlistService {
         });
     }
 
-    findOne(id: number) {
-        return `This action returns a #${id} watchlist`;
-    }
-
-    update(id: number, updateWatchlistDto: UpdateWatchlistDto) {
-        return `This action updates a #${id} watchlist`;
-    }
-
-    remove(id: number) {
-        return `This action removes a #${id} watchlist`;
+    async deleteFromWatchlist(userId: string, mediaId: string) {
+        const isExists = await this.prismaService.watchlist.findFirst({
+            where: { userId, mediaId },
+        });
+        if (!isExists) {
+            throw new NotFoundException('Media not found in your watchlist');
+        }
+        await this.prismaService.watchlist.delete({ where: { id: isExists.id } });
+        return { success: true };
     }
 }
