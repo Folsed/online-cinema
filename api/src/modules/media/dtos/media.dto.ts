@@ -1,7 +1,6 @@
 import { Expose, Transform, Type } from 'class-transformer';
 import { MediaImageType, MediaType } from '@prisma/client';
 import { PickType } from '@nestjs/mapped-types';
-import { GenreDto } from '../services/genres.service';
 
 export class MediaImageDto {
     @Expose()
@@ -20,7 +19,7 @@ export class MediaImageDto {
     metadata?: object;
 
     @Expose()
-    type: string;
+    type: MediaImageType;
 }
 
 export class MediaDto {
@@ -86,6 +85,12 @@ export class MediaDto {
         return obj.MediaImages.find((img: MediaImageDto) => img.type === MediaImageType.backdrop);
     })
     backdrop!: MediaImageDto;
+
+    @Expose()
+    @Transform(({ obj }) => {
+        return obj.MediaImages.find((img: MediaImageDto) => img.type === MediaImageType.thumbnail);
+    })
+    thumbnail!: MediaImageDto;
 }
 
 export class MediaPosterDto extends PickType(MediaDto, [
@@ -98,12 +103,3 @@ export class MediaPosterDto extends PickType(MediaDto, [
     'genres',
     'poster',
 ] as const) {}
-
-// export class BrowseMediaResponseDto {
-//     @Expose()
-//     genres!: { slug: string; name: string }[];
-//
-//     @Expose()
-//     @Type(() => MediaPosterDto)
-//     media!: MediaPosterDto[];
-// }

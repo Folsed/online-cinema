@@ -7,10 +7,17 @@ import {
 import { CreateWatchlistDto } from './dto/create-watchlist.dto';
 import { UpdateWatchlistDto } from './dto/update-watchlist.dto';
 import { PrismaService } from '../prisma/prisma.service';
+import { MediaRepository } from '../media/repositories/media.repository';
+import { plainToInstance } from 'class-transformer';
+import { WatchlistDto } from './dto/watchlist.dto';
+import { TWatchlist } from '../../types/watchlist.types';
 
 @Injectable()
 export class WatchlistService {
-    constructor(private prismaService: PrismaService) {}
+    constructor(
+        private readonly prismaService: PrismaService,
+        private readonly mediaRepository: MediaRepository,
+    ) {}
 
     async addToWatchlist(userId: string, dto: CreateWatchlistDto) {
         const mediaIsExists = await this.prismaService.media.findUnique({
@@ -46,8 +53,25 @@ export class WatchlistService {
         }
     }
 
-    findAll() {
-        return `This action returns all watchlist`;
+    async findWatchlist(userId: string, lang: string) {
+        const records: TWatchlist[] = await this.prismaService.watchlist.findMany({
+            where: { userId },
+            orderBy: { createdAt: 'desc' },
+            include: {
+                media: {
+                    include: this.mediaRepository.mediaResponseConfiguration(lang),
+                },
+            },
+        });
+
+        const media = records.map((record) => ({
+            ...record.media,
+            addedAt: record.createdAt,
+        }));
+
+        return plainToInstance(WatchlistDto, media, {
+            excludeExtraneousValues: true,
+        });
     }
 
     findOne(id: number) {

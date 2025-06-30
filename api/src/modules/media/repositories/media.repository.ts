@@ -6,7 +6,7 @@ import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class MediaRepository {
-    constructor(private prismaService: PrismaService) {}
+    constructor(private readonly prismaService: PrismaService) {}
 
     async takeMediaByAlias(alias: string, langCode: string = 'uk') {
         return this.prismaService.media.findUnique({
@@ -53,7 +53,7 @@ export class MediaRepository {
         });
     }
 
-    private mediaResponseConfiguration(lang: string = 'uk'): Prisma.MediaInclude {
+    mediaResponseConfiguration(lang: string = 'uk'): Prisma.MediaInclude {
         return {
             MediaTranslations: {
                 where: { langCode: lang },

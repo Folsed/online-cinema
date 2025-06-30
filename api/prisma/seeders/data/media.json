@@ -38,6 +38,12 @@
                 "width": 2560,
                 "height": 1440,
                 "altText": "Inception Poster"
+            },
+            "thumbnail": {
+                "url": "storage/images/thumbnail/avatar.jpg",
+                "width": 800,
+                "height": 500,
+                "altText": "Avatar"
             }
         }
     },
@@ -80,6 +86,12 @@
                 "width": 2560,
                 "height": 1440,
                 "altText": "Inception Poster"
+            },
+            "thumbnail": {
+                "url": "storage/images/thumbnail/breaking-bad.jpg",
+                "width": 800,
+                "height": 500,
+                "altText": "Breaking Bad"
             }
         }
     },
@@ -122,6 +134,12 @@
                 "width": 2560,
                 "height": 1440,
                 "altText": "Inception Poster"
+            },
+            "thumbnail": {
+                "url": "storage/images/thumbnail/castlevania.jpg",
+                "width": 800,
+                "height": 500,
+                "altText": "Castlevania"
             }
         }
     },
@@ -164,6 +182,12 @@
                 "width": 2560,
                 "height": 1440,
                 "altText": "Inception Poster"
+            },
+            "thumbnail": {
+                "url": "storage/images/thumbnail/darling.jpg",
+                "width": 800,
+                "height": 500,
+                "altText": "Darling"
             }
         }
     },
@@ -206,6 +230,12 @@
                 "width": 2560,
                 "height": 1440,
                 "altText": "Inception Poster"
+            },
+            "thumbnail": {
+                "url": "storage/images/thumbnail/games.webp",
+                "width": 800,
+                "height": 500,
+                "altText": "Games"
             }
         }
     },
@@ -248,6 +278,12 @@
                 "width": 2560,
                 "height": 1440,
                 "altText": "Inception Poster"
+            },
+            "thumbnail": {
+                "url": "storage/images/thumbnail/hell-paradise.avif",
+                "width": 800,
+                "height": 500,
+                "altText": "Hell Paradise"
             }
         }
     },
@@ -290,6 +326,12 @@
                 "width": 2560,
                 "height": 1440,
                 "altText": "Inception Poster"
+            },
+            "thumbnail": {
+                "url": "storage/images/thumbnail/interstellar.jpg",
+                "width": 800,
+                "height": 500,
+                "altText": "Interstellar"
             }
         }
     },
@@ -332,6 +374,12 @@
                 "width": 2560,
                 "height": 1440,
                 "altText": "Inception Poster"
+            },
+            "thumbnail": {
+                "url": "storage/images/thumbnail/matrix.jpg",
+                "width": 800,
+                "height": 500,
+                "altText": "Matrix"
             }
         }
     },
@@ -374,6 +422,12 @@
                 "width": 2560,
                 "height": 1440,
                 "altText": "Inception Poster"
+            },
+            "thumbnail": {
+                "url": "storage/images/thumbnail/overlord.webp",
+                "width": 800,
+                "height": 500,
+                "altText": "Overlord"
             }
         }
     },
@@ -416,6 +470,12 @@
                 "width": 2560,
                 "height": 1440,
                 "altText": "Inception Poster"
+            },
+            "thumbnail": {
+                "url": "storage/images/thumbnail/suzume.jpg",
+                "width": 800,
+                "height": 500,
+                "altText": "Suzume"
             }
         }
     },
@@ -458,6 +518,12 @@
                 "width": 2560,
                 "height": 1440,
                 "altText": "Inception Poster"
+            },
+            "thumbnail": {
+                "url": "storage/images/thumbnail/witcher.avif",
+                "width": 800,
+                "height": 500,
+                "altText": "Witcher"
             }
         }
     },
@@ -500,6 +566,12 @@
                 "width": 2560,
                 "height": 1440,
                 "altText": "Inception Poster"
+            },
+            "thumbnail": {
+                "url": "storage/images/thumbnail/your-name.jpg",
+                "width": 800,
+                "height": 500,
+                "altText": "Your Name"
             }
         }
     },
@@ -542,6 +614,12 @@
                 "width": 2560,
                 "height": 1440,
                 "altText": "Inception Poster"
+            },
+            "thumbnail": {
+                "url": "storage/images/thumbnail/interstellar.jpg",
+                "width": 800,
+                "height": 500,
+                "altText": "Interstellar"
             }
         }
     },
@@ -584,6 +662,12 @@
                 "width": 2560,
                 "height": 1440,
                 "altText": "Inception Poster"
+            },
+            "thumbnail": {
+                "url": "storage/images/thumbnail/darling.jpg",
+                "width": 800,
+                "height": 500,
+                "altText": "Darling"
             }
         }
     },
@@ -626,6 +710,12 @@
                 "width": 2560,
                 "height": 1440,
                 "altText": "Inception Poster"
+            },
+            "thumbnail": {
+                "url": "storage/images/thumbnail/breaking-bad.jpg",
+                "width": 800,
+                "height": 500,
+                "altText": "Breaking Bad"
             }
         }
     }

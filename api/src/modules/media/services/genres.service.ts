@@ -1,11 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
 
-export interface GenreDto {
-    slug: string;
-    name: string;
-}
-
 @Injectable()
 export class GenresService {
     constructor(private readonly prismaService: PrismaService) {}

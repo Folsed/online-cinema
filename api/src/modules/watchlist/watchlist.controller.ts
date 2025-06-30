@@ -1,9 +1,21 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Req, UseGuards } from '@nestjs/common';
+import {
+    Controller,
+    Get,
+    Post,
+    Body,
+    Patch,
+    Param,
+    Delete,
+    Req,
+    UseGuards,
+    Query,
+} from '@nestjs/common';
 import { WatchlistService } from './watchlist.service';
 import { UpdateWatchlistDto } from './dto/update-watchlist.dto';
 import { AuthenticatedGuard } from '../../common/guards/authenticated.guard';
 import { RequestWithUser } from '../../types/http.types';
 import { CreateWatchlistDto } from './dto/create-watchlist.dto';
+import { LanguageExistsPipe } from '../../common/pipes/language.pipe';
 
 @UseGuards(AuthenticatedGuard)
 @Controller('watchlist')
@@ -16,8 +28,11 @@ export class WatchlistController {
     }
 
     @Get()
-    findAll() {
-        return this.watchlistService.findAll();
+    getWatchlist(
+        @Req() req: RequestWithUser,
+        @Query('lang', LanguageExistsPipe) lang: string = 'uk',
+    ) {
+        return this.watchlistService.findWatchlist(req.user.id, lang);
     }
 
     @Get(':id')
