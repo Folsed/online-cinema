@@ -1,6 +1,7 @@
 import React from 'react'
 import StoreProvider from '@/providers/StoreProvider'
 import { cookies } from 'next/headers'
+import { NextIntlClientProvider } from 'next-intl'
 
 const Providers = async ({ children }: { children: React.ReactNode }) => {
     const getCookies = await cookies()
@@ -26,7 +27,11 @@ const Providers = async ({ children }: { children: React.ReactNode }) => {
         console.error(error)
     }
 
-    return <StoreProvider initialUser={initialUser}>{children}</StoreProvider>
+    return (
+        <NextIntlClientProvider>
+            <StoreProvider initialUser={initialUser}>{children}</StoreProvider>
+        </NextIntlClientProvider>
+    )
 }
 
 export default Providers

@@ -1,0 +1,32 @@
+model Genre {
+  id                 String              @id @default(uuid())
+  slug               String              @unique
+  createdAt          DateTime            @default(now()) @map("created_at")
+  updatedAt          DateTime            @updatedAt @map("updated_at")
+  GenresTranslations GenreTranslations[]
+  GenresOnMedia      GenresOnMedia[]
+
+  @@map("genres")
+}
+
+model GenreTranslations {
+  genreId     String   @map("genre_id")
+  genre       Genre    @relation(fields: [genreId], references: [id])
+  langCode    String   @map("lang_code")
+  lang        Language @relation(fields: [langCode], references: [code])
+  name        String
+  description String?
+
+  @@id([genreId, langCode])
+  @@map("genres_translations")
+}
+
+model GenresOnMedia {
+  mediaId String @map("media_id")
+  media   Media  @relation(fields: [mediaId], references: [id])
+  genreId String @map("genre_id")
+  genre   Genre  @relation(fields: [genreId], references: [id])
+
+  @@id([genreId, mediaId])
+  @@map("media_genres")
+}

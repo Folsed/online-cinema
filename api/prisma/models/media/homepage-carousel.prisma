@@ -1,0 +1,13 @@
+model HomepageCarousel {
+  id              String    @id @default(uuid())
+  mediaId         String    @unique
+  media           Media     @relation(fields: [mediaId], references: [id])
+  slidePosition   Int       @map("slide_position")
+  active          Boolean
+  desktopImageUrl String    @map("desktop_image_url")
+  mobileImageUrl  String    @map("mobile_image_url")
+  startDate       DateTime? @map("start_date")
+  endDate         DateTime? @map("end_date")
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+}
