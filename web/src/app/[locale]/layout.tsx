@@ -1,6 +1,6 @@
+import '../globals.css'
 import type { Metadata } from 'next'
 import { Rubik } from 'next/font/google'
-import '../globals.css'
 import Providers from '@/providers/Providers'
 import { hasLocale } from 'next-intl'
 import { routing } from '@/i18n/routing'
@@ -10,7 +10,6 @@ import { LocaleSwitcher } from '@/components/ui/LocaleSwitcher'
 
 const rubik = Rubik({
     subsets: ['latin'],
-    variable: '--font-rubik',
 })
 export const metadata: Metadata = {
     title: 'Dokidoki',

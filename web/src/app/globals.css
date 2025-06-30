@@ -65,6 +65,7 @@
     --tertiary-hover: #272c36;
     --tertiary-active: #16181d;
 
+
     --radius: 0rem;
     --card: oklch(0.21 0.006 285.885);
     --card-foreground: oklch(0.985 0 0);
@@ -107,6 +108,10 @@
         @apply bg-background text-foreground;
     }
 
+    body[data-scroll-locked] {
+        margin-right: 0 !important;
+    }
+
     button {
         @apply cursor-pointer;
     }
@@ -122,29 +127,50 @@
     .content-padding {
         @apply px-[1rem] sm:px-[2rem] lg:px-[3rem] xl:px-[4rem] 2xl:px-[5rem];
     }
+
+    :root {
+        --content-inline-padding: 1rem;
+    }
+
+    @variant md {
+        :root {
+            --content-inline-padding: 2rem;
+        }
+    }
+    @variant lg {
+        :root {
+            --content-inline-padding: 3rem;
+        }
+    }
+    @variant xl {
+        :root {
+            --content-inline-padding: 4rem;
+        }
+    }
+    @variant 2xl {
+        :root {
+            --content-inline-padding: 5rem;
+        }
+    }
+
 }
 
-@layer utilities {
-    body[data-scroll-locked] {
-        margin-right: 0 !important;
-    }
 
-    .underline-hover {
-        @apply relative inline-block after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:scale-x-100;
-    }
-
-    .hero-carousel {
-        background-image:
-            linear-gradient(to bottom, #0000 min(40vh, 50%), #000 100%),
-            linear-gradient(to right, #000c 0, #0009 30%, #0000 70%);
-    }
-
+@layer components {
     .details_glass-container {
         background: rgba(0, 0, 0, 0.8);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(1.6px);
         -webkit-backdrop-filter: blur(1.6px);
         border: 1px solid rgba(0, 0, 0, 0.13);
+    }
+
+}
+
+@layer utilities {
+    .hero-carousel {
+        background-image: linear-gradient(to bottom, #0000 min(40vh, 50%), #000 100%),
+        linear-gradient(to right, #000c 0, #0009 30%, #0000 70%);
     }
 
     .no-scrollbar {

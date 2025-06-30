@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Bookmark, ListVideo, LogOut, Settings, UserRoundPen } from 'lucide-react'
@@ -35,7 +35,7 @@ const UserActions = ({
     return (
         <div className='flex flex-col gap-3'>
             <Link
-                href='/account/profile'
+                href={'/account/profile'}
                 onClick={handleDismiss}
                 className='hover:bg-tertiary-hover flex items-center gap-24 px-4 py-2'
             >
@@ -58,7 +58,7 @@ const UserActions = ({
             </Link>
             <Separator />
             <Link
-                href='/account/profile'
+                href={'/account/profile'}
                 onClick={handleDismiss}
                 className='hover:bg-tertiary-hover flex items-center gap-2 px-4 py-4'
             >
@@ -68,7 +68,7 @@ const UserActions = ({
             <Separator />
             <div className=''>
                 <Link
-                    href='/account/profile'
+                    href={'/account/profile'}
                     onClick={handleDismiss}
                     className='hover:bg-tertiary-hover flex items-center gap-2 px-4 py-4'
                 >
@@ -76,7 +76,7 @@ const UserActions = ({
                     Дивитися пізніше (5)
                 </Link>
                 <Link
-                    href='/account/profile'
+                    href={'/account/profile'}
                     onClick={handleDismiss}
                     className='hover:bg-tertiary-hover flex items-center gap-2 px-4 py-4'
                 >

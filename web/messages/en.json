@@ -49,5 +49,16 @@
         "list": "Add to wishlist",
         "my-list": "View my list",
         "share": "Share"
+    },
+    "Account": {
+        "profile": {
+            "nav": {
+                "profile": "Profile",
+                "to-watch": "To Watch",
+                "planned": "Planned",
+                "watched": "Watched",
+                "reviews": "My Reviews"
+            }
+        }
     }
 }
