@@ -1,4 +1,4 @@
-import { Expose, Transform, Type } from 'class-transformer';
+import { Expose, Transform } from 'class-transformer';
 import { MediaImageType, MediaType } from '@prisma/client';
 import { PickType } from '@nestjs/mapped-types';
 
@@ -52,43 +52,43 @@ export class MediaDto {
     active!: boolean;
 
     @Expose()
-    @Transform(({ obj }) => obj.MediaTranslations[0]?.posterTitle ?? obj.originalTitle)
+    @Transform(({ obj }) => obj.mediaTranslations[0]?.posterTitle ?? obj.originalTitle)
     posterTitle!: string;
 
     @Expose()
-    @Transform(({ obj }) => obj.MediaTranslations[0]?.synopsis ?? null)
+    @Transform(({ obj }) => obj.mediaTranslations[0]?.synopsis ?? null)
     synopsis!: string;
 
     @Expose()
     @Transform(({ obj }) =>
-        obj.GenresOnMedia.map((gm: any) => ({
+        obj.genresOnMedia.map((gm: any) => ({
             slug: gm.genre.slug,
-            name: gm.genre.GenresTranslations[0]?.name ?? gm.genre.slug,
+            name: gm.genre.genresTranslations[0]?.name ?? gm.genre.slug,
         })),
     )
     genres!: { slug: string; name: string }[];
 
     @Expose()
     @Transform(({ obj }) => {
-        return obj.MediaImages.find((img: MediaImageDto) => img.type === MediaImageType.logo);
+        return obj.mediaImages.find((img: MediaImageDto) => img.type === MediaImageType.logo);
     })
     logo!: MediaImageDto;
 
     @Expose()
     @Transform(({ obj }) => {
-        return obj.MediaImages.find((img: MediaImageDto) => img.type === MediaImageType.poster);
+        return obj.mediaImages.find((img: MediaImageDto) => img.type === MediaImageType.poster);
     })
     poster!: MediaImageDto;
 
     @Expose()
     @Transform(({ obj }) => {
-        return obj.MediaImages.find((img: MediaImageDto) => img.type === MediaImageType.backdrop);
+        return obj.mediaImages.find((img: MediaImageDto) => img.type === MediaImageType.backdrop);
     })
     backdrop!: MediaImageDto;
 
     @Expose()
     @Transform(({ obj }) => {
-        return obj.MediaImages.find((img: MediaImageDto) => img.type === MediaImageType.thumbnail);
+        return obj.mediaImages.find((img: MediaImageDto) => img.type === MediaImageType.thumbnail);
     })
     thumbnail!: MediaImageDto;
 }

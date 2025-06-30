@@ -10,7 +10,7 @@ const prisma = new PrismaClient();
 async function main() {
     // Pivot
     await prisma.genresOnMedia.deleteMany();
-    await prisma.watchlist.deleteMany()
+    await prisma.watchlist.deleteMany();
 
     // Clearing child tables in the correct order
     await prisma.mediaImages.deleteMany();

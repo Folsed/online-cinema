@@ -11,22 +11,23 @@ enum MediaStatus {
 }
 
 model Media {
-  id                String              @id @default(uuid())
-  type              MediaType
-  originalTitle     String              @map("original_title")
-  alias             String              @unique
-  releaseDate       DateTime            @map("release_date")
-  runtime           Int
-  status            MediaStatus
-  metadata          Json?
-  active            Boolean
-  createdAt         DateTime            @default(now()) @map("created_at")
-  updatedAt         DateTime            @updatedAt @map("updated_at")
-  MediaTranslations MediaTranslations[]
-  GenresOnMedia     GenresOnMedia[]
-  MediaImages       MediaImages[]
-  HomepageCarousel  HomepageCarousel?
-  Watchlist         Watchlist[]
+  id            String      @id @default(uuid())
+  type          MediaType
+  originalTitle String      @map("original_title")
+  alias         String      @unique
+  releaseDate   DateTime    @map("release_date")
+  runtime       Int
+  status        MediaStatus
+  metadata      Json?
+  active        Boolean
+  createdAt     DateTime    @default(now()) @map("created_at")
+  updatedAt     DateTime    @updatedAt @map("updated_at")
+
+  mediaTranslations MediaTranslations[]
+  genresOnMedia     GenresOnMedia[]
+  mediaImages       MediaImages[]
+  homepageCarousel  HomepageCarousel?
+  watchlist         Watchlist[]
 
   @@map("media")
 }

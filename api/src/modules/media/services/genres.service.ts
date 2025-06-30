@@ -10,7 +10,7 @@ export class GenresService {
             select: {
                 slug: true,
                 imageUrl: true,
-                GenresTranslations: {
+                genresTranslations: {
                     where: { langCode },
                     select: { name: true },
                 },
@@ -18,10 +18,10 @@ export class GenresService {
             orderBy: { slug: 'asc' },
         });
 
-        return genres.map(({ slug, imageUrl, GenresTranslations }) => ({
+        return genres.map(({ slug, imageUrl, genresTranslations }) => ({
             slug,
             imageUrl,
-            name: GenresTranslations[0]?.name ?? slug,
+            name: genresTranslations[0]?.name ?? slug,
         }));
     }
 }

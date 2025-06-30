@@ -28,7 +28,7 @@ export async function seedMedia(prisma: PrismaClient) {
                 status: m.status,
                 metadata: m.metadata,
                 active: m.active,
-                MediaTranslations: {
+                mediaTranslations: {
                     create: Object.entries(m.translations).map(
                         ([langCode, { posterTitle, synopsis }]) => ({
                             langCode,
@@ -37,7 +37,7 @@ export async function seedMedia(prisma: PrismaClient) {
                         }),
                     ),
                 },
-                MediaImages: {
+                mediaImages: {
                     create: Object.entries(m.images || {}).map(
                         ([type, { url, width, height, altText }]) => ({
                             type: type as MediaImageType,
