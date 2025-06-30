@@ -46,7 +46,8 @@
     },
     "buttons": {
         "watch": "Start watching",
-        "list": "Add to wishlist",
+        "list": "Add to watchlist",
+        "listed": "Added to watchlist",
         "my-list": "View my list",
         "share": "Share"
     },

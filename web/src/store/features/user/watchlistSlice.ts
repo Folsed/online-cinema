@@ -25,6 +25,18 @@ export const watchlistSlice = createSlice({
                     state.list = payload
                 }
             )
+            .addMatcher(
+                watchlistApiSlice.endpoints.addToWatchlist.matchFulfilled,
+                (state, { payload }) => {
+                    state.list = payload
+                }
+            )
+            .addMatcher(
+                watchlistApiSlice.endpoints.deleteFromWatchlist.matchFulfilled,
+                (state, { payload }) => {
+                    state.list = payload
+                }
+            )
             .addMatcher(authApiSlice.endpoints.logout.matchFulfilled, state => {
                 state.list = []
             })

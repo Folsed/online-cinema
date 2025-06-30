@@ -10,7 +10,7 @@ export const watchlistApiSlice = createApi({
     tagTypes: ['watchlist'],
     endpoints: build => ({
         // POST api/watchlist
-        addToWatchlist: build.mutation<{ success: boolean }, { mediaId: string }>({
+        addToWatchlist: build.mutation<IWatchlist[], { mediaId: string }>({
             query: body => ({
                 url: 'watchlist',
                 method: 'POST',
@@ -26,7 +26,7 @@ export const watchlistApiSlice = createApi({
         }),
 
         // DELETE /watchlist/:mediaId
-        deleteFromWatchlist: build.mutation<{ success: boolean }, { mediaId: string }>({
+        deleteFromWatchlist: build.mutation<IWatchlist[], { mediaId: string }>({
             query: ({ mediaId }) => ({ url: `watchlist/${mediaId}`, method: 'DELETE' }),
             invalidatesTags: ['watchlist'],
         }),

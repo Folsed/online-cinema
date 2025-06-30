@@ -11,8 +11,12 @@ export class WatchlistController {
     constructor(private readonly watchlistService: WatchlistService) {}
 
     @Post()
-    createWatchlistRecord(@Req() req: RequestWithUser, @Body() dto: CreateWatchlistDto) {
-        return this.watchlistService.addToWatchlist(req.user.id, dto);
+    createWatchlistRecord(
+        @Req() req: RequestWithUser,
+        @Body() dto: CreateWatchlistDto,
+        @Query('lang', LanguageExistsPipe) lang: string = 'uk',
+    ) {
+        return this.watchlistService.addToWatchlist(req.user.id, dto.mediaId, lang);
     }
 
     @Get()
@@ -24,7 +28,11 @@ export class WatchlistController {
     }
 
     @Delete(':mediaId')
-    deleteWatchlistRecord(@Req() req: RequestWithUser, @Param('mediaId') mediaId: string) {
-        return this.watchlistService.deleteFromWatchlist(req.user.id, mediaId);
+    deleteWatchlistRecord(
+        @Req() req: RequestWithUser,
+        @Param('mediaId') mediaId: string,
+        @Query('lang', LanguageExistsPipe) lang: string = 'uk',
+    ) {
+        return this.watchlistService.deleteFromWatchlist(req.user.id, mediaId, lang);
     }
 }

@@ -14,12 +14,9 @@ const WatchlistButton = ({ mediaId }: { mediaId: string }) => {
     const t = useTranslations()
     const [addToWatchlist] = useAddToWatchlistMutation()
     const [deleteFromWatchlist] = useDeleteFromWatchlistMutation()
-    const watchlistGlobal: IWatchlist[] = useAppSelector(state => state.watchlist.list)
-    const { data: watchlistRTK = [] } = useGetWatchlistQuery()
+    const watchlist: IWatchlist[] = useAppSelector(state => state.watchlist.list)
 
-    const exists = (watchlistRTK.length > 0 ? watchlistRTK : watchlistGlobal).some(
-        item => item.id === mediaId
-    )
+    const exists = watchlist.some(item => item.id === mediaId)
 
     const handleClick = async () => {
         if (exists) {
@@ -36,7 +33,7 @@ const WatchlistButton = ({ mediaId }: { mediaId: string }) => {
             onClick={handleClick}
         >
             <Bookmark style={{ scale: 1.5 }} className='fill-inherit' />
-            {t('buttons.list')}
+            {exists ? t('buttons.listed') : t('buttons.list')}
         </Button>
     )
 }

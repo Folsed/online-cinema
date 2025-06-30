@@ -3,6 +3,7 @@ import { authApiSlice } from '@/store/features/auth/authApiSlice'
 import { authSlice } from '@/store/features/auth/authSlice'
 import { watchlistApiSlice } from '@/store/features/user/watchlistApiSlice'
 import { watchlistSlice } from '@/store/features/user/watchlistSlice'
+import { listenerMiddleware } from '@/store/listeners'
 
 const rootReducer = combineSlices(authApiSlice, authSlice, watchlistApiSlice, watchlistSlice)
 
@@ -10,10 +11,9 @@ export const makeStore = (preloadedState?: Parameters<typeof rootReducer>[0]) =>
     return configureStore({
         reducer: rootReducer,
         middleware: getDefaultMiddleware => {
-            return getDefaultMiddleware().concat(
-                authApiSlice.middleware,
-                watchlistApiSlice.middleware
-            )
+            return getDefaultMiddleware()
+                .concat(authApiSlice.middleware, watchlistApiSlice.middleware)
+                .prepend(listenerMiddleware.middleware)
         },
         preloadedState,
     })

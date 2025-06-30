@@ -4,48 +4,37 @@ import {
     InternalServerErrorException,
     NotFoundException,
 } from '@nestjs/common';
-import { CreateWatchlistDto } from './dto/create-watchlist.dto';
-import { PrismaService } from '../prisma/prisma.service';
-import { MediaRepository } from '../media/repositories/media.repository';
 import { plainToInstance } from 'class-transformer';
 import { WatchlistDto } from './dto/watchlist.dto';
-import { TWatchlist } from '../../types/watchlist.types';
+import { WatchlistRepository } from './watchlist.repository';
 
 @Injectable()
 export class WatchlistService {
-    constructor(
-        private readonly prismaService: PrismaService,
-        private readonly mediaRepository: MediaRepository,
-    ) {}
+    constructor(private readonly watchlistRepository: WatchlistRepository) {}
 
-    async addToWatchlist(userId: string, dto: CreateWatchlistDto) {
-        const mediaIsExists = await this.prismaService.media.findUnique({
-            where: { id: dto.mediaId },
-        });
-
-        if (!mediaIsExists) {
-            throw new NotFoundException(`Media with id=${dto.mediaId} not found`);
+    async addToWatchlist(userId: string, mediaId: string, lang: string) {
+        if (!(await this.watchlistRepository.ensureMediaExists(mediaId))) {
+            throw new NotFoundException(`Media with id=${mediaId} not found`);
         }
 
-        const isExists = await this.prismaService.watchlist.findFirst({
-            where: {
-                userId: userId,
-                mediaId: dto.mediaId,
-            },
-        });
-        if (isExists) {
+        if (await this.watchlistRepository.matchIsExists(userId, mediaId)) {
             throw new ConflictException('This media is already in your watchlist');
         }
 
         try {
-            return await this.prismaService.watchlist.create({
-                data: {
-                    userId: userId,
-                    mediaId: dto.mediaId,
-                },
-                include: {
-                    media: true,
-                },
+            const rawRecords = await this.watchlistRepository.createAndFetchAll(
+                userId,
+                mediaId,
+                lang,
+            );
+
+            const records = rawRecords.map((record) => ({
+                ...record.media,
+                addedAt: record.createdAt,
+            }));
+
+            return plainToInstance(WatchlistDto, records, {
+                excludeExtraneousValues: true,
             });
         } catch (error) {
             throw new InternalServerErrorException(error);
@@ -53,34 +42,36 @@ export class WatchlistService {
     }
 
     async findWatchlist(userId: string, lang: string) {
-        const records: TWatchlist[] = await this.prismaService.watchlist.findMany({
-            where: { userId },
-            orderBy: { createdAt: 'desc' },
-            include: {
-                media: {
-                    include: this.mediaRepository.mediaResponseConfiguration(lang),
-                },
-            },
-        });
+        const rawRecords = await this.watchlistRepository.fetchAll(userId, lang);
 
-        const media = records.map((record) => ({
+        const records = rawRecords.map((record) => ({
             ...record.media,
             addedAt: record.createdAt,
         }));
 
-        return plainToInstance(WatchlistDto, media, {
+        return plainToInstance(WatchlistDto, records, {
             excludeExtraneousValues: true,
         });
     }
 
-    async deleteFromWatchlist(userId: string, mediaId: string) {
-        const isExists = await this.prismaService.watchlist.findFirst({
-            where: { userId, mediaId },
-        });
-        if (!isExists) {
-            throw new NotFoundException('Media not found in your watchlist');
+    async deleteFromWatchlist(userId: string, mediaId: string, lang: string) {
+        try {
+            const rawRecords = await this.watchlistRepository.deleteAndFetchAll(
+                userId,
+                mediaId,
+                lang,
+            );
+
+            const records = rawRecords.map((record) => ({
+                ...record.media,
+                addedAt: record.createdAt,
+            }));
+
+            return plainToInstance(WatchlistDto, records, {
+                excludeExtraneousValues: true,
+            });
+        } catch (error) {
+            throw new InternalServerErrorException(error);
         }
-        await this.prismaService.watchlist.delete({ where: { id: isExists.id } });
-        return { success: true };
     }
 }
