@@ -5,7 +5,6 @@ import { useTranslations } from 'next-intl'
 import {
     useAddToWatchlistMutation,
     useDeleteFromWatchlistMutation,
-    useGetWatchlistQuery,
 } from '@/store/features/user/watchlistApiSlice'
 import { useAppSelector } from '@/store/hooks'
 import { IWatchlist } from '@/types/user.types'

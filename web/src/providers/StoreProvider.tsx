@@ -24,7 +24,6 @@ const StoreProvider = ({
                 isAuthenticated: true,
             }
         }
-        // підсовуємо список
         preloadedState.watchlist = {
             list: userWatchlist,
         }

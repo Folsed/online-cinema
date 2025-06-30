@@ -9,7 +9,7 @@ export const watchlistApiSlice = createApi({
     }),
     tagTypes: ['watchlist'],
     endpoints: build => ({
-        // POST api/watchlist
+        // POST watchlist
         addToWatchlist: build.mutation<IWatchlist[], { mediaId: string }>({
             query: body => ({
                 url: 'watchlist',
