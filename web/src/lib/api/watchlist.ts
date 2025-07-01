@@ -1,14 +1,17 @@
 import { cookies } from 'next/headers'
 
-export async function fetchUserWatchlist() {
+export async function fetchUserWatchlist(lang: string) {
     const cookieStore = await cookies()
     const cookieHeader = cookieStore.toString()
 
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}watchlist`, {
-            credentials: 'include',
-            headers: { cookie: cookieHeader },
-        })
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BACKEND_API_URL}watchlist?lang=${lang}`,
+            {
+                credentials: 'include',
+                headers: { cookie: cookieHeader },
+            }
+        )
 
         return await res.json()
     } catch (error) {

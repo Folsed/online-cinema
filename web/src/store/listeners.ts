@@ -6,9 +6,12 @@ import { settingsApiSlice } from '@/store/features/user/settingsApiSlice'
 export const listenerMiddleware = createListenerMiddleware()
 
 listenerMiddleware.startListening({
-    matcher: isAnyOf(authApiSlice.endpoints.login.matchFulfilled),
+    matcher: isAnyOf(
+        authApiSlice.endpoints.login.matchFulfilled,
+        authApiSlice.endpoints.register.matchFulfilled
+    ),
     effect: async (action, listenerApi) => {
-        listenerApi.dispatch(settingsApiSlice.endpoints.getUserSettings.initiate())
-        listenerApi.dispatch(watchlistApiSlice.endpoints.getWatchlist.initiate())
+        listenerApi.dispatch(settingsApiSlice.endpoints.getUserSettings.initiate(undefined))
+        listenerApi.dispatch(watchlistApiSlice.endpoints.getWatchlist.initiate(undefined))
     },
 })

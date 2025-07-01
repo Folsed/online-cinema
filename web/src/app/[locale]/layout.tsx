@@ -36,7 +36,7 @@ const RootLayout = async ({
     return (
         <html lang={locale}>
             <body className={`${rubik.className} antialiased`}>
-                <Providers>
+                <Providers locale={locale}>
                     {children}
                     <LocaleSwitcher />
                 </Providers>
