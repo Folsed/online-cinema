@@ -17,3 +17,4 @@ export interface IWatchlist extends Omit<IMediaPoster, 'poster'> {
     addedAt: string
     thumbnail: IMediaImage
 }
+

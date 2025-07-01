@@ -5,15 +5,15 @@ import { _tabs } from '@/app/[locale]/(defaultLayout)/account/components/_tabs'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useAppSelector } from '@/store/hooks'
-import { usePathname } from 'next/navigation'
+import { usePathname } from '@/i18n/navigation'
 
 const AccountNav = () => {
+    const pathname = usePathname()
     const t = useTranslations('Account')
     const user = useAppSelector(state => state.auth.user?.user)
-    const pathname = usePathname()
 
     return (
-        <nav className='mt-4 flex text-nowrap lg:ml-32 overflow-auto no-scrollbar -mr-4'>
+        <nav className='no-scrollbar mt-4 -mr-4 flex overflow-auto text-nowrap lg:ml-32'>
             <div className='text-span flex items-center text-sm uppercase md:text-base'>
                 <figure className='relative mr-1 h-6 w-6 overflow-hidden rounded-[2px]'>
                     <Image
@@ -27,7 +27,7 @@ const AccountNav = () => {
                 <div className='flex'>
                     {_tabs.map((item, index) => {
                         const isActive =
-                            item.link === pathname || pathname.startsWith(`${item.link}/`)
+                            item.link === pathname || pathname.startsWith(`${item.link}`)
                         return (
                             <div
                                 className={`after:text-muted-foreground ${isActive ? 'text-foreground' : 'text-muted-foreground'} after:px-2 after:content-["/"] last:after:px-0 last:after:content-[""] md:after:px-3`}
@@ -35,7 +35,7 @@ const AccountNav = () => {
                             >
                                 <Link
                                     href={item.link}
-                                    className={`relative px-2 py-1 transition-colors duration-200 ${
+                                    className={`hover:text-foreground relative px-2 py-1 transition-colors duration-200 ${
                                         isActive ? 'text-foreground' : 'text-muted-foreground'
                                     } `}
                                 >
