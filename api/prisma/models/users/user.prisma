@@ -7,9 +7,10 @@ model User {
   createdAt     DateTime @default(now()) @map("created_at")
   updatedAt     DateTime @updatedAt @map("updated_at")
 
-  account   Account[]
-  session   Session[]
-  watchlist Watchlist[]
+  account      Account[]
+  session      Session[]
+  watchlist    Watchlist[]
+  userSettings UserSettings?
 
   @@map("users")
 }

@@ -1,5 +1,4 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { MediaImageType } from '@prisma/client';
 import { MediaRepository } from '../media/repositories/media.repository';
 import { PrismaService } from '../prisma/prisma.service';
 
