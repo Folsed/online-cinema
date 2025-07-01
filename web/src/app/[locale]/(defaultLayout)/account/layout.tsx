@@ -14,9 +14,7 @@ const AccountLayout = async ({ children }: { children: ReactNode }) => {
         <div className='content-padding'>
             <div className='mx-auto grid max-w-[calc(var(--content-inline-padding)*2+65rem)] gap-4 md:gap-8 lg:gap-16'>
                 <AccountNav />
-                <div className='mt-4 sm:mt-0'>
-                    <UserOverview />
-                </div>
+                <UserOverview />
                 {children}
             </div>
         </div>

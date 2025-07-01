@@ -61,5 +61,10 @@
                 "reviews": "My Reviews"
             }
         }
+    },
+    "states": {
+        "empty": {
+            "empty-wl": "Your watchlist is empty.\nAdd your favorite anime, movies, or TV shows here!"
+        }
     }
 }
