@@ -7,6 +7,7 @@ import { routing } from '@/i18n/routing'
 import { notFound } from 'next/navigation'
 import { setRequestLocale } from 'next-intl/server'
 import { LocaleSwitcher } from '@/components/ui/LocaleSwitcher'
+import { Toaster } from '@/components/shadcn/sonner'
 
 const rubik = Rubik({
     subsets: ['latin'],
@@ -39,6 +40,20 @@ const RootLayout = async ({
                 <Providers locale={locale}>
                     {children}
                     <LocaleSwitcher />
+
+                    <Toaster
+                        className='w-full'
+                        position='top-center'
+                        expand={true}
+                        toastOptions={{
+                            style: {
+                                borderRadius: 0,
+                                marginTop: '-25px',
+                                left: 0,
+                            },
+                            duration: 20000,
+                        }}
+                    />
                 </Providers>
             </body>
         </html>

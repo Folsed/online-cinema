@@ -153,6 +153,17 @@
         }
     }
 
+    [data-radix-toast-wrapper] {
+        width: 100vw !important;
+        height: 40px !important;
+        top: 0 !important;
+        left: 0 !important;
+    }
+
+    [data-radix-toast] {
+        height: 100% !important;
+    }
+
 }
 
 
