@@ -11,7 +11,7 @@ const MediaPoster = ({ poster }: { poster: IMediaPoster }) => {
                 <Image
                     src={`${process.env.NEXT_PUBLIC_BACKEND_STORAGE_URL}${poster.poster.url}`}
                     alt={poster.poster.altText}
-                    className='object-cover object-[50%_50%]'
+                    className='object-cover'
                     sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                     fill
                     priority
