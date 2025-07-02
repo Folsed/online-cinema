@@ -10,14 +10,10 @@ const DefaultLayout = async ({
 }) => {
     const { locale } = await params
     return (
-        <div className='grid min-h-screen grid-rows-[60px_1fr_auto]'>
-            <header className='row-start-1'>
-                <Header locale={locale} />
-            </header>
-            <main className='row-start-2'>{children}</main>
-            <footer className='row-start-3'>
-                <Footer />
-            </footer>
+        <div className='flex min-h-screen flex-col'>
+            <Header locale={locale} />
+            <main className='flex-1 mt-[60px]'>{children}</main>
+            <Footer />
         </div>
     )
 }

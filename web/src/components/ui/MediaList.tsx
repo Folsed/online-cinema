@@ -54,7 +54,9 @@ const MediaList: React.FC<IMediaListProps> = ({ initialData, mediaType, amountBy
     return (
         <>
             {items.map(poster => (
-                <MediaPoster key={poster.alias} poster={poster} />
+                <div className='min-w-[250px] px-2 py-1' key={poster.alias}>
+                    <MediaPoster poster={poster} />
+                </div>
             ))}
 
             <div ref={loaderRef} className='h-1' />

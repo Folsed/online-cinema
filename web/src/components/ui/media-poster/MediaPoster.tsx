@@ -1,12 +1,50 @@
-import React from 'react'
+'use client'
+import React, { RefObject, useEffect, useRef, useState } from 'react'
 import { IMediaPoster } from '@/types/media.types'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './poster.module.css'
 
-const MediaPoster = ({ poster }: { poster: IMediaPoster }) => {
+interface IMediaPosterProps {
+    poster: IMediaPoster
+    carouselChild?: boolean
+    trackRef?: RefObject<HTMLDivElement>
+}
+
+const MediaPoster: React.FC<IMediaPosterProps> = ({ poster, carouselChild, trackRef }) => {
+    const cardRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        const cardRefCurrent = cardRef.current
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    cardRefCurrent?.removeAttribute('inert')
+                    cardRefCurrent?.setAttribute('aria-hidden', 'false')
+                } else {
+                    cardRefCurrent?.setAttribute('inert', '')
+                    cardRefCurrent?.setAttribute('aria-hidden', 'true')
+                }
+            },
+            {
+                root: trackRef?.current,
+                threshold: 0.5,
+            }
+        )
+
+        if (cardRefCurrent) {
+            observer.observe(cardRefCurrent)
+        }
+
+        return () => {
+            if (cardRefCurrent) {
+                observer.unobserve(cardRefCurrent)
+            }
+        }
+    }, [trackRef, cardRef])
+
     return (
-        <div className='relative max-w-[250px] min-w-[250px] p-3 pt-1 pr-4'>
+        <div className={`relative h-full w-full aria-hidden:opacity-50`} ref={cardRef}>
             <Link href={`/details/${poster.alias}`} className={`${styles.posterCard} block`}>
                 <Image
                     src={`${process.env.NEXT_PUBLIC_BACKEND_STORAGE_URL}${poster.poster.url}`}
