@@ -6,6 +6,7 @@ import { watchlistSlice } from '@/store/features/user/watchlistSlice'
 import { listenerMiddleware } from '@/store/listeners'
 import { settingsApiSlice } from '@/store/features/user/settingsApiSlice'
 import { settingsSlice } from '@/store/features/user/settingsSlice'
+import { mediaApiSlice } from '@/store/features/media/mediaApiSlice'
 
 const rootReducer = combineSlices(
     authApiSlice,
@@ -13,7 +14,8 @@ const rootReducer = combineSlices(
     watchlistApiSlice,
     watchlistSlice,
     settingsApiSlice,
-    settingsSlice
+    settingsSlice,
+    mediaApiSlice
 )
 
 export const makeStore = (preloadedState?: Parameters<typeof rootReducer>[0]) => {
@@ -24,7 +26,8 @@ export const makeStore = (preloadedState?: Parameters<typeof rootReducer>[0]) =>
                 .concat(
                     authApiSlice.middleware,
                     settingsApiSlice.middleware,
-                    watchlistApiSlice.middleware
+                    watchlistApiSlice.middleware,
+                    mediaApiSlice.middleware
                 )
                 .prepend(listenerMiddleware.middleware)
         },

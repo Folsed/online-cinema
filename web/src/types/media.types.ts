@@ -63,6 +63,7 @@ export interface IBrowseMediaParams {
     n?: number
     offset?: number
     sort_by?: EAllowedMediaSort
+    media_type?: EMediaType
     categories?: string
     ratings?: boolean
     lang?: string
