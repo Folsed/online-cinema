@@ -1,5 +1,5 @@
 'use client'
-import React, { RefObject, useEffect, useRef, useState } from 'react'
+import React, { RefObject, useEffect, useRef } from 'react'
 import { IMediaPoster } from '@/types/media.types'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -7,11 +7,10 @@ import styles from './poster.module.css'
 
 interface IMediaPosterProps {
     poster: IMediaPoster
-    carouselChild?: boolean
     trackRef?: RefObject<HTMLDivElement>
 }
 
-const MediaPoster: React.FC<IMediaPosterProps> = ({ poster, carouselChild, trackRef }) => {
+const MediaPoster: React.FC<IMediaPosterProps> = ({ poster, trackRef }) => {
     const cardRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -32,7 +31,7 @@ const MediaPoster: React.FC<IMediaPosterProps> = ({ poster, carouselChild, track
             }
         )
 
-        if (cardRefCurrent) {
+        if (cardRefCurrent && trackRef) {
             observer.observe(cardRefCurrent)
         }
 
@@ -41,7 +40,7 @@ const MediaPoster: React.FC<IMediaPosterProps> = ({ poster, carouselChild, track
                 observer.unobserve(cardRefCurrent)
             }
         }
-    }, [trackRef, cardRef])
+    }, [trackRef])
 
     return (
         <div className={`relative h-full w-full aria-hidden:opacity-50`} ref={cardRef}>
