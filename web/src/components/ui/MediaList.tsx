@@ -48,7 +48,6 @@ const MediaList: React.FC<IMediaListProps> = ({ initialData, mediaType, amountBy
             }
         )
         observer.observe(element)
-        console.log('hi')
         return () => observer.disconnect()
     }, [loadMore])
 

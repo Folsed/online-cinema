@@ -1,4 +1,5 @@
 import Header from '@/app/[locale]/(defaultLayout)/components/header/Header'
+import Footer from '@/app/[locale]/(defaultLayout)/components/footer/Footer'
 
 const DefaultLayout = async ({
     children,
@@ -9,9 +10,14 @@ const DefaultLayout = async ({
 }) => {
     const { locale } = await params
     return (
-        <div className='grid grid-rows-[60px_auto]'>
-            <Header locale={locale} />
+        <div className='grid min-h-screen grid-rows-[60px_1fr_auto]'>
+            <header className='row-start-1'>
+                <Header locale={locale} />
+            </header>
             <main className='row-start-2'>{children}</main>
+            <footer className='row-start-3'>
+                <Footer />
+            </footer>
         </div>
     )
 }
