@@ -1,11 +1,12 @@
 import React, { useCallback } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Bookmark, ListVideo, LogOut, Settings, UserRoundPen } from 'lucide-react'
+import { Bookmark, History, ListVideo, LogOut, Settings, UserRoundPen } from 'lucide-react'
 import { Separator } from '@/components/shadcn/separator'
 import { IUserData } from '@/types/user.types'
 import { useLogoutMutation } from '@/store/features/auth/authApiSlice'
 import { useRouter } from 'next/navigation'
+import { useAppSelector } from '@/store/hooks'
 
 const UserActions = ({
     user,
@@ -16,6 +17,7 @@ const UserActions = ({
 }) => {
     const [logout] = useLogoutMutation()
     const router = useRouter()
+    const watchlistLength = useAppSelector(state => state.watchlist.list.length)
 
     const handleDismiss = useCallback(() => {
         setActive(false)
@@ -73,7 +75,15 @@ const UserActions = ({
                     className='hover:bg-tertiary-hover flex items-center gap-2 px-4 py-4'
                 >
                     <Bookmark />
-                    Дивитися пізніше (5)
+                    Дивитися пізніше ({watchlistLength})
+                </Link>
+                <Link
+                    href={'/account/profile'}
+                    onClick={handleDismiss}
+                    className='hover:bg-tertiary-hover flex items-center gap-2 px-4 py-4'
+                >
+                    <History />
+                    Історія
                 </Link>
                 <Link
                     href={'/account/profile'}

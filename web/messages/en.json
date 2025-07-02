@@ -57,10 +57,11 @@
         "profile": {
             "nav": {
                 "profile": "Profile",
-                "to-watch": "To Watch",
                 "planned": "Planned",
-                "watched": "Watched",
-                "reviews": "My Reviews"
+                "history": "History",
+                "lists": "Lists",
+                "reviews": "My Reviews",
+                "settings": "Settings"
             }
         }
     },

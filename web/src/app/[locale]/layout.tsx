@@ -43,7 +43,7 @@ const RootLayout = async ({
 
                     <Toaster
                         className='w-full'
-                        position='top-center'
+                        position='bottom-right'
                         expand={true}
                         toastOptions={{
                             style: {
@@ -51,7 +51,6 @@ const RootLayout = async ({
                                 marginTop: '-25px',
                                 left: 0,
                             },
-                            duration: 20000,
                         }}
                     />
                 </Providers>
