@@ -28,7 +28,7 @@ const UserOverview = () => {
                             </div>
                         </div>
 
-                        <div className='flex flex-col gap-1 sm:flex-row sm:gap-24 text-xs sm:text-sm'>
+                        <div className='flex flex-col gap-1 text-xs sm:flex-row sm:gap-24 sm:text-sm'>
                             <div className='text-primary capitalize italic'>
                                 <span>administrator</span>
                             </div>

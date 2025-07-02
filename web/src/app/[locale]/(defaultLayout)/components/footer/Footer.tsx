@@ -5,7 +5,7 @@ import { X } from 'lucide-react'
 const Footer = () => {
     return (
         <footer className='relative mt-24 flex flex-col items-center'>
-            <div className='from-background to-tertiary-active flex h-[300px] flex-col items-center justify-center gap-8 bg-gradient-to-b w-full'>
+            <div className='from-background to-tertiary-active flex h-[300px] w-full flex-col items-center justify-center gap-8 bg-gradient-to-b'>
                 <div className='flex gap-8'>
                     <Link
                         href='/'

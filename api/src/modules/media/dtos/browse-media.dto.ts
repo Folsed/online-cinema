@@ -2,7 +2,6 @@ import {
     IsString,
     IsOptional,
     IsArray,
-    ArrayNotEmpty,
     ArrayUnique,
     IsInt,
     Min,
@@ -13,6 +12,7 @@ import {
 } from 'class-validator';
 import { Transform, Type } from 'class-transformer';
 import { EAllowedMediaSort, TSortBy } from '../../../types/media.types';
+import { MediaType } from '@prisma/client';
 
 export class BrowseMediaDto {
     /** n media */
@@ -35,15 +35,29 @@ export class BrowseMediaDto {
     @IsEnum(EAllowedMediaSort)
     sort_by?: TSortBy;
 
+    /** Media type */
+    @IsOptional()
+    @IsEnum(MediaType)
+    @IsString()
+    media_type: MediaType;
+
     /** Multi-genres via commas or array */
     @IsOptional()
     @IsArray()
-    @ArrayNotEmpty()
     @ArrayUnique()
     @IsString({ each: true })
-    @Transform(({ value }) =>
-        Array.isArray(value) ? value : value.split(',').filter((v: string) => v),
-    )
+    @Transform(({ value }) => {
+        if (value === null || value === undefined || value === '') {
+            return [];
+        }
+        if (Array.isArray(value)) {
+            return value;
+        }
+        return value
+            .split(',')
+            .map((v: string) => v.trim())
+            .filter((v: string) => v.length > 0);
+    })
     categories?: string[];
 
     /** Flag: only with rating */

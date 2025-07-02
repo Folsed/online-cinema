@@ -65,7 +65,6 @@
     --tertiary-hover: #272c36;
     --tertiary-active: #16181d;
 
-
     --radius: 0rem;
     --card: oklch(0.21 0.006 285.885);
     --card-foreground: oklch(0.985 0 0);
@@ -168,9 +167,7 @@
     [data-radix-toast] {
         height: 100% !important;
     }
-
 }
-
 
 @layer components {
     .details_glass-container {
@@ -180,14 +177,13 @@
         -webkit-backdrop-filter: blur(1.6px);
         border: 1px solid rgba(0, 0, 0, 0.13);
     }
-
-
 }
 
 @layer utilities {
     .hero-carousel {
-        background-image: linear-gradient(to bottom, #0000 min(40vh, 50%), #000 100%),
-        linear-gradient(to right, #000c 0, #0009 30%, #0000 70%);
+        background-image:
+            linear-gradient(to bottom, #0000 min(40vh, 50%), #000 100%),
+            linear-gradient(to right, #000c 0, #0009 30%, #0000 70%);
     }
 
     .no-scrollbar {

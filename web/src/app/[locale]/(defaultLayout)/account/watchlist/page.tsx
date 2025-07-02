@@ -26,7 +26,7 @@ const WatchlistPage = () => {
                 </div>
             )}
             <div
-                className={`grid gap-y-2 place-items-center ${
+                className={`grid place-items-center gap-y-2 ${
                     !settings?.view || settings?.view === 'grid'
                         ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3'
                         : ''

@@ -12,7 +12,7 @@ const DefaultLayout = async ({
     return (
         <div className='flex min-h-screen flex-col'>
             <Header locale={locale} />
-            <main className='flex-1 mt-[60px]'>{children}</main>
+            <main className='mt-[60px] flex-1'>{children}</main>
             <Footer />
         </div>
     )

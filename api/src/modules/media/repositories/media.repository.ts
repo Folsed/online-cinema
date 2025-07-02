@@ -17,9 +17,10 @@ export class MediaRepository {
 
     async browseMedia(dto: BrowseMediaDto) {
         const {
-            n = 20,
-            offset = 0,
+            n,
+            offset,
             sort_by = EAllowedMediaSort.NewlyAdded,
+            media_type,
             categories,
             ratings,
             lang,
@@ -35,6 +36,10 @@ export class MediaRepository {
                     },
                 },
             };
+        }
+
+        if (media_type) {
+            where.type = media_type;
         }
 
         if (lang) {
