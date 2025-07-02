@@ -1,3 +1,5 @@
+import { IMediaImage, IMediaPoster } from '@/types/media.types'
+
 export interface IUserData {
     redirect?: boolean
     token: string
@@ -10,3 +12,9 @@ export interface IUserData {
         updatedAt: Date
     }
 }
+
+export interface IWatchlist extends Omit<IMediaPoster, 'poster'> {
+    addedAt: string
+    thumbnail: IMediaImage
+}
+

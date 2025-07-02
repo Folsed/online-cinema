@@ -5,13 +5,14 @@ import Logo from '@/components/svgs/Logo'
 import { Menu, Search, UserRound } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Browse from '@/app/[locale]/(defaultLayout)/components/browse/Browse'
+import UserDropdown from '@/app/[locale]/(defaultLayout)/components/user-dropdown/UserDropdown'
 
 const Header = ({ locale }: { locale: string }) => {
     const t = useTranslations('Header')
 
     return (
         <header className='bg-tertiary fixed z-50 flex h-[60px] w-full justify-center'>
-            <div className='content-padding flex w-full justify-between max-md:p-0'>
+            <div className='flex w-full justify-between max-md:p-0'>
                 <div className='flex h-full'>
                     <button className='hover:bg-tertiary-active hover:text-secondary-foreground flex h-full cursor-pointer items-center rounded-none px-3 duration-200 md:hidden'>
                         <Menu size={28} />
@@ -50,13 +51,7 @@ const Header = ({ locale }: { locale: string }) => {
                         <Search size={22} />
                     </button>
 
-                    <Link
-                        className='hover:hover:bg-tertiary-active hover:text-secondary-foreground flex h-full cursor-pointer items-center px-4 duration-200'
-                        href={'/login'}
-                        title='Вхід в акаунт'
-                    >
-                        <UserRound size={24} />
-                    </Link>
+                    <UserDropdown />
                 </div>
             </div>
         </header>

@@ -52,6 +52,7 @@ export interface IMediaDetails {
     logo: IMediaImage
     poster: IMediaImage
     backdrop: IMediaImage
+    thumbnail: IMediaImage
 }
 
 export interface IGenres extends IMediaGenre {
@@ -70,5 +71,13 @@ export interface IBrowseMediaParams {
 export interface IMediaPoster
     extends Pick<
         IMediaDetails,
-        'type' | 'alias' | 'status' | 'metadata' | 'posterTitle' | 'synopsis' | 'genres' | 'poster'
+        | 'id'
+        | 'type'
+        | 'alias'
+        | 'status'
+        | 'metadata'
+        | 'posterTitle'
+        | 'synopsis'
+        | 'genres'
+        | 'poster'
     > {}

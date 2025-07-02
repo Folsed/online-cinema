@@ -10,4 +10,6 @@ model HomepageCarousel {
   endDate         DateTime? @map("end_date")
   createdAt       DateTime  @default(now()) @map("created_at")
   updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  @@map("homepage_carousel")
 }

@@ -2,28 +2,41 @@
 import { TAppStore, makeStore } from '@/store/store'
 import React, { useRef } from 'react'
 import { Provider } from 'react-redux'
-import { IUserData } from '@/types/user.types'
+import { IUserData, IWatchlist } from '@/types/user.types'
+import { IUserSettings } from '@/types/settings.types'
 
 const StoreProvider = ({
     children,
     initialUser,
+    userSettings,
+    userWatchlist,
 }: {
     children: React.ReactNode
     initialUser: IUserData | null
+    userSettings: IUserSettings | null
+    userWatchlist: IWatchlist[] | null
 }) => {
     const storeRef = useRef<TAppStore | null>(null)
 
     if (!storeRef.current) {
-        storeRef.current = makeStore(
-            initialUser
-                ? {
-                      auth: {
-                          user: initialUser,
-                          isAuthenticated: true,
-                      },
-                  }
-                : undefined
-        )
+        const preloadedState: any = {}
+
+        if (initialUser) {
+            preloadedState.auth = {
+                user: initialUser,
+                isAuthenticated: true,
+            }
+        }
+        if (userSettings) {
+            preloadedState.userSettings = userSettings
+        }
+        if (userWatchlist) {
+            preloadedState.watchlist = {
+                list: userWatchlist,
+            }
+        }
+
+        storeRef.current = makeStore(preloadedState)
     }
 
     return <Provider store={storeRef.current}>{children}</Provider>

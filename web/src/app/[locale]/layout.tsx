@@ -1,16 +1,16 @@
+import '../globals.css'
 import type { Metadata } from 'next'
 import { Rubik } from 'next/font/google'
-import '../globals.css'
 import Providers from '@/providers/Providers'
 import { hasLocale } from 'next-intl'
 import { routing } from '@/i18n/routing'
 import { notFound } from 'next/navigation'
 import { setRequestLocale } from 'next-intl/server'
 import { LocaleSwitcher } from '@/components/ui/LocaleSwitcher'
+import { Toaster } from '@/components/shadcn/sonner'
 
 const rubik = Rubik({
     subsets: ['latin'],
-    variable: '--font-rubik',
 })
 export const metadata: Metadata = {
     title: 'Dokidoki',
@@ -37,9 +37,22 @@ const RootLayout = async ({
     return (
         <html lang={locale}>
             <body className={`${rubik.className} antialiased`}>
-                <Providers>
+                <Providers locale={locale}>
                     {children}
                     <LocaleSwitcher />
+
+                    <Toaster
+                        className='w-full'
+                        position='bottom-right'
+                        expand={true}
+                        toastOptions={{
+                            style: {
+                                borderRadius: 0,
+                                marginTop: '-25px',
+                                left: 0,
+                            },
+                        }}
+                    />
                 </Providers>
             </body>
         </html>

@@ -11,6 +11,7 @@ import { Button } from '@/components/shadcn/button'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/shadcn/tooltip'
 import Series from '@/app/[locale]/(defaultLayout)/details/[alias]/components/Series'
 import Recommendations from '@/app/[locale]/(defaultLayout)/details/[alias]/components/Recommendations'
+import WatchlistButton from '@/components/ui/WatchlistButton'
 
 const Details = ({ details }: { details: IMediaDetails }) => {
     const releaseDate = new Date(details.releaseDate).getFullYear()
@@ -92,10 +93,7 @@ const Details = ({ details }: { details: IMediaDetails }) => {
                     <Play style={{ scale: 1.5 }} />
                     {t('buttons.watch')}
                 </Button>
-                <Button variant='ghost' className='text-muted-foreground uppercase'>
-                    <Bookmark style={{ scale: 1.5 }} />
-                    {t('buttons.list')}
-                </Button>
+                <WatchlistButton mediaId={details.id} />
                 <Tooltip>
                     <TooltipTrigger asChild>
                         <Button variant='ghost' className='text-muted-foreground uppercase'>

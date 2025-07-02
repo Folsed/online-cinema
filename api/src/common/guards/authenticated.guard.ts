@@ -5,7 +5,7 @@ import { pickAuthHeaders } from '../utils/http.util';
 
 @Injectable()
 export class AuthenticatedGuard implements CanActivate {
-    async canActivate(executionContext: ExecutionContext) {
+    async canActivate(executionContext: ExecutionContext): Promise<boolean> {
         const req = executionContext.switchToHttp().getRequest<Request>();
 
         const session = await auth.api.getSession({ headers: pickAuthHeaders(req) });
@@ -14,7 +14,7 @@ export class AuthenticatedGuard implements CanActivate {
             throw new UnauthorizedException('Not authenticated');
         }
 
-        req.user = session;
+        req.user = session.user;
 
         return true;
     }
