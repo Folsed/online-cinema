@@ -4,8 +4,8 @@ model Genre {
   imageUrl           String              @map("image_url")
   createdAt          DateTime            @default(now()) @map("created_at")
   updatedAt          DateTime            @updatedAt @map("updated_at")
-  GenresTranslations GenreTranslations[]
-  GenresOnMedia      GenresOnMedia[]
+  genresTranslations GenreTranslations[]
+  genresOnMedia      GenresOnMedia[]
 
   @@map("genres")
 }

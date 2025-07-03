@@ -6,7 +6,7 @@ import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class MediaRepository {
-    constructor(private prismaService: PrismaService) {}
+    constructor(private readonly prismaService: PrismaService) {}
 
     async takeMediaByAlias(alias: string, langCode: string = 'uk') {
         return this.prismaService.media.findUnique({
@@ -28,7 +28,7 @@ export class MediaRepository {
         const where: Prisma.MediaWhereInput = {};
 
         if (categories?.length) {
-            where.GenresOnMedia = {
+            where.genresOnMedia = {
                 some: {
                     genre: {
                         slug: { in: categories },
@@ -38,7 +38,7 @@ export class MediaRepository {
         }
 
         if (lang) {
-            where.MediaTranslations = {
+            where.mediaTranslations = {
                 some: {
                     langCode: lang,
                 },
@@ -53,16 +53,16 @@ export class MediaRepository {
         });
     }
 
-    private mediaResponseConfiguration(lang: string = 'uk'): Prisma.MediaInclude {
+    mediaResponseConfiguration(lang: string = 'uk'): Prisma.MediaInclude {
         return {
-            MediaTranslations: {
+            mediaTranslations: {
                 where: { langCode: lang },
             },
-            GenresOnMedia: {
+            genresOnMedia: {
                 include: {
                     genre: {
                         include: {
-                            GenresTranslations: {
+                            genresTranslations: {
                                 where: { langCode: lang },
                                 select: { name: true },
                             },
@@ -70,7 +70,7 @@ export class MediaRepository {
                     },
                 },
             },
-            MediaImages: {
+            mediaImages: {
                 select: {
                     type: true,
                     url: true,

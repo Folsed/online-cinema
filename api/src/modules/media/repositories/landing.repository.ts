@@ -14,12 +14,12 @@ export class LandingRepository {
                     select: {
                         type: true,
                         alias: true,
-                        GenresOnMedia: {
+                        genresOnMedia: {
                             select: {
                                 genre: {
                                     select: {
                                         slug: true,
-                                        GenresTranslations: {
+                                        genresTranslations: {
                                             where: { langCode },
                                             select: { name: true },
                                         },
@@ -27,11 +27,11 @@ export class LandingRepository {
                                 },
                             },
                         },
-                        MediaTranslations: {
+                        mediaTranslations: {
                             where: { langCode },
                             select: { synopsis: true },
                         },
-                        MediaImages: {
+                        mediaImages: {
                             where: { type: MediaImageType.logo },
                             select: {
                                 url: true,

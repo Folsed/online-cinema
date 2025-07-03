@@ -87,7 +87,7 @@ export async function seedGenres(prisma: PrismaClient) {
             create: {
                 slug: genre.slug,
                 imageUrl: genre.image,
-                GenresTranslations: {
+                genresTranslations: {
                     create: Object.entries(genre.translations).map(([langCode, name]) => ({
                         langCode,
                         name,

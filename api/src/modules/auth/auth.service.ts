@@ -7,10 +7,11 @@ import { forwardCookies, pickAuthHeaders } from '../../common/utils/http.util';
 import { plainToInstance } from 'class-transformer';
 import { UserResponseDto } from './dtos/user-response.dto';
 import { ConfirmResetDto, RequestResetDto } from './dtos/password-reset.dto';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class AuthService {
-    constructor() {}
+    constructor(private readonly prismaService: PrismaService) {}
 
     async register(dto: RegisterDto, @Res() res: Response) {
         const betterRes = await auth.api.signUpEmail({
@@ -24,7 +25,19 @@ export class AuthService {
         });
 
         forwardCookies(betterRes, res);
-        res.status(betterRes.status).json(await betterRes.json());
+
+        const payload = await betterRes.json();
+        if (betterRes.ok && payload.user?.id) {
+            try {
+                await this.prismaService.userSettings.create({
+                    data: { userId: payload.user.id },
+                });
+            } catch (error) {
+                console.error('Cannot create user settings', error);
+            }
+        }
+
+        res.status(betterRes.status).json(payload);
     }
 
     async login(dto: LoginDto, res: Response) {

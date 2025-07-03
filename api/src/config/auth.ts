@@ -16,6 +16,9 @@ const auth = betterAuth({
         enabled: true,
         sendResetPassword: sendResetPasswordEmail,
     },
+    advanced: {
+        cookiePrefix: 'd-user.X',
+    },
     user: {
         modelName: 'users',
         fields: {

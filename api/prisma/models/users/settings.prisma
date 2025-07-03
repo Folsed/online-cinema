@@ -1,0 +1,15 @@
+model UserSettings {
+  userId          String   @unique @map("user_id")
+  user            User     @relation(fields: [userId], references: [id])
+  ui              Json?    @default("{}") @map("ui")
+  watchlist       Json?    @default("{}") @map("watchlist_filter")
+  videoPlayer     Json?    @default("{}") @map("video_player")
+  notifications   Json?    @default("{}") @map("notifications")
+  parentalControl Json?    @default("{}") @map("parental_control")
+  privacy         Json?    @default("{}") @map("privacy")
+  locale          Json?    @default("{}") @map("locale")
+  accessibility   Json?    @default("{}") @map("accessibility")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  @@map("user_settings")
+}

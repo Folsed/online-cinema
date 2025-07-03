@@ -27,20 +27,20 @@ export class CarouselSlideDto {
     type: MediaType;
 
     @Expose()
-    @Transform(({ obj }) => obj.media.MediaTranslations[0].synopsis)
+    @Transform(({ obj }) => obj.media.mediaTranslations[0].synopsis)
     synopsis: string;
 
     @Expose()
     @Transform(({ obj }) =>
-        obj.media.GenresOnMedia.map((gm: any) => ({
+        obj.media.genresOnMedia.map((gm: any) => ({
             slug: gm.genre.slug,
-            name: gm.genre.GenresTranslations[0].name,
+            name: gm.genre.genresTranslations[0].name,
         })),
     )
     genres: { slug: string; name: string }[];
 
     @Expose()
-    @Transform(({ obj }) => obj.media.MediaImages?.[0] ?? null)
+    @Transform(({ obj }) => obj.media.mediaImages?.[0] ?? null)
     @Type(() => MediaDto)
     logo: MediaDto | null;
 }
