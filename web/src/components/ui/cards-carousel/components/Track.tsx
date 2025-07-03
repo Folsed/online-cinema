@@ -18,7 +18,6 @@ const Track = ({ content }: { content: IMediaPoster[] }) => {
                         <div className='max-w-full snap-start px-2'>
                             <MediaPoster
                                 poster={item}
-                                carouselChild={true}
                                 trackRef={trackRef as RefObject<HTMLDivElement>}
                             />
                         </div>

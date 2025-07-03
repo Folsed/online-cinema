@@ -14,7 +14,7 @@ const Arrows: React.FC<IArrowsProps> = ({ trackRef }) => {
         if (!track) return
 
         setIsActiveBack(track.scrollLeft > 0)
-        setIsActiveForward(track.scrollLeft < track.scrollWidth - track.clientWidth)
+        setIsActiveForward(track.scrollLeft + 1 < track.scrollWidth - track.clientWidth)
     }, [trackRef])
 
     useEffect(() => {

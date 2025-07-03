@@ -7,15 +7,14 @@ import { IUserSettings } from '@/types/settings.types'
 import { useUpdateUserSettingsMutation } from '@/store/features/user/settingsApiSlice'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/shadcn/tooltip'
 
-const ViewButton = ({ settings }: { settings: IUserSettings['watchlist'] }) => {
+const WatchlistViewButton = ({ settings }: { settings: IUserSettings['watchlist'] }) => {
     const t = useTranslations('buttons')
     const [updateSettings, { isLoading: isUpdating }] = useUpdateUserSettingsMutation()
 
     const handleChangeView = useCallback(async () => {
-        const nextView = !settings?.view || settings?.view === 'flex' ? 'grid' : 'flex'
+        const nextView = !settings?.view || settings?.view === 'grid' ? 'flex' : 'grid'
 
         const newWatchlist = {
-            ...settings,
             view: nextView,
         }
 
@@ -46,4 +45,4 @@ const ViewButton = ({ settings }: { settings: IUserSettings['watchlist'] }) => {
     )
 }
 
-export default ViewButton
+export default WatchlistViewButton
