@@ -65,7 +65,6 @@
     --tertiary-hover: #272c36;
     --tertiary-active: #16181d;
 
-
     --radius: 0rem;
     --card: oklch(0.21 0.006 285.885);
     --card-foreground: oklch(0.985 0 0);
@@ -130,26 +129,31 @@
 
     :root {
         --content-inline-padding: 1rem;
+        --cards-inline: 2;
     }
 
     @variant md {
         :root {
             --content-inline-padding: 2rem;
+            --cards-inline: 3;
         }
     }
     @variant lg {
         :root {
             --content-inline-padding: 3rem;
+            --cards-inline: 4;
         }
     }
     @variant xl {
         :root {
             --content-inline-padding: 4rem;
+            --cards-inline: 5;
         }
     }
     @variant 2xl {
         :root {
             --content-inline-padding: 5rem;
+            --cards-inline: 6;
         }
     }
 
@@ -163,9 +167,7 @@
     [data-radix-toast] {
         height: 100% !important;
     }
-
 }
-
 
 @layer components {
     .details_glass-container {
@@ -175,14 +177,13 @@
         -webkit-backdrop-filter: blur(1.6px);
         border: 1px solid rgba(0, 0, 0, 0.13);
     }
-
-
 }
 
 @layer utilities {
     .hero-carousel {
-        background-image: linear-gradient(to bottom, #0000 min(40vh, 50%), #000 100%),
-        linear-gradient(to right, #000c 0, #0009 30%, #0000 70%);
+        background-image:
+            linear-gradient(to bottom, #0000 min(40vh, 50%), #000 100%),
+            linear-gradient(to right, #000c 0, #0009 30%, #0000 70%);
     }
 
     .no-scrollbar {
@@ -192,5 +193,13 @@
 
     .no-scrollbar::-webkit-scrollbar {
         display: none;
+    }
+
+    .cards-carousel_margin {
+        @apply -mx-[1.2rem] sm:-mx-[2.2rem] lg:-mx-[3.2rem] xl:-mx-[4.2rem] 2xl:-mx-[5.2rem];
+    }
+
+    .cards-carousel_scroll-padding {
+        @apply scroll-p-[1rem] sm:scroll-p-[2rem] lg:scroll-p-[3rem] xl:scroll-p-[4rem] 2xl:scroll-p-[5rem];
     }
 }

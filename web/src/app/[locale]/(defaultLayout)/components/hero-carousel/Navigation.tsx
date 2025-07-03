@@ -8,7 +8,7 @@ interface INavigationProps {
 
 const Navigation: React.FC<INavigationProps> = ({ slides, currentIndex, updateIndex }) => {
     return (
-        <div className='content-padding relative z-[1] mt-2 block md:mt-4 lg:mt-6'>
+        <div className='content-padding relative z-[1] mt-4 block md:mt-6 lg:mt-12'>
             <div className='flex justify-center gap-2 md:justify-start'>
                 {slides.map((_, index) => (
                     <button

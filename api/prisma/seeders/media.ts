@@ -1,4 +1,4 @@
-import MEDIA_DATA from './data/media.json';
+import MEDIA_DATA from './data/media-ai.json';
 import type { MediaType, MediaStatus, PrismaClient, MediaImageType } from '@prisma/client';
 
 interface IMediaSeed {

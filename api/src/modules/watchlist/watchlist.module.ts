@@ -8,6 +8,12 @@ import { WatchlistRepository } from './watchlist.repository';
 
 @Module({
     controllers: [WatchlistController],
-    providers: [WatchlistService, MediaRepository, LanguageExistsPipe, LanguagesRepository, WatchlistRepository],
+    providers: [
+        WatchlistService,
+        MediaRepository,
+        LanguageExistsPipe,
+        LanguagesRepository,
+        WatchlistRepository,
+    ],
 })
 export class WatchlistModule {}
